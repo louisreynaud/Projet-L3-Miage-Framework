@@ -1,0 +1,71 @@
+***************************************************************
+Compte Rendu Audit n°2 : 
+Le 03/04/2018 à 15h30 à L'UGA de Valence (site de Briffaut)
+Durée : 45min
+***************************************************************
+
+	Personnes présentes  : 
+Tous les membres du groupe : Louis REYNAUD, Pauline ALLEMAND, 
+Aurélien BOURRET, Anass DAEF, Ahlame DIOUAN, Fatou Aicha KANE, Nabil ESSAKKAY.
+Nadine MARCOS, Xavier Girod
+
+
+
+Lors de cet audit, Mme MARCOS et Mr GIROD nous ont d'abords fait quelques remarques sur la
+nouvelle version de notre cahier des charges : Il fallait faire ressortir la notion d'intranet,
+qui se comprenait en lisant les diagrammes de classes, mais n'était pas clairement expliquée. Il 
+manquait également les technologies que nous allions utiliser pour les échanges, les interfaces...
+
+Il faudrait égalemtn ajouter de l'adaptabilité au framework, notamment on y intégrant des abstractions. 
+
+
+Nous avons ensuite présenté aux maitres d'oeuvre un premier travail que nous avions réalisé : un
+échange de fichiers entre deux utilisateurs (sur deux machines différentes) via un système de 
+sockets client-serveur-client.
+Sur le serveur se trouve une liste de fichiers téléchargeables par les deux utilisateurs. Si le
+client 1 veut partager un fichier avec le deuxième client, il se connecte au serveur et l'ajoute à la
+liste. Si le client 2 consulte la liste, il peux alors voir le nom du fichier ajouté par le client 1.
+Il peux ensuite le télécharger.
+Les fichiers ne sont pas enregistrés sur le serveur. ils restent sur les machines respectives des 
+utilisateurs. ils sont simplement mis à disposition des autres, qui peuvent les télecharger sans 
+demander d'autorisation.
+Ils ont trouvés que ce système était bien, et que nos arguments pour avoir ce partage de fichiers
+sans demande d'autorisation étaient convaincants. Il manquait néanmoins une interface graphique pour
+faciliter son utilisation.
+
+
+Après cela, nous avons également montré un deuxième concept que nous avons implémenté : une discussion
+instantanée qui fonctionne avec Java RMI. Il s'agit d'une conversation commune à un groupe d'utilisateur,
+mais avec laquelle on peut selectionner un membre du groupe en particulier pour lui envoyer un message
+que lui seul pourra voir.
+POurl'instant, ce système fonctionne avec plusieurs fenetres utilisateur sur une seule machine. Mais
+nous n'arrivons pas à l'adapter à des utilisateurs sur des machines différentes.
+On nous a conseillé d'en parler a notre conseiller technique : Mr Philippe MORAT.
+
+Nous avons ensuite montré des interface réalisées grâce a java FX aux maitres d'oeuvre, qui ont validé 
+ce travail.
+
+
+
+
+********************************************
+Décisions prises à la suite de cet audit : 
+********************************************
+
+Après cet audit, nous nous sommes répartis différentes tâches : 
+
+Nous avons décidé d'améliorer la précision de notre description du framework dans notre cahier des 
+charges afin de mieux cerner le concept d'intranet. 
+
+Nous avons ensuite fait un point sur les technologies que nous allions employer. Pour les interfaces,
+ nous nous serviront de Java FX. Mais pour les échanges entre utilisateurs, nous hésitons encore entre
+Java RMI et des sockets clients-serveur. C'est pourquoi nous ne nous sommes pas encore fixés et nous 
+allons réaliser plus de tests.
+
+Nous avons ensuite sollicité l'ensemble du groupe afin de construire un plan de développement.
+Puis, la responsable de la communication avec les diiférents acteurs de notre projet (Fatou Aicha KANE)
+a envoyé un e mail a Philippe MORAT pour en savoir plus sur notre problème avec Java RMI.
+
+Concernant les interfaces, nous allons essayer de les améliorer un peu, avec plus de graphismes pour
+rendre notre application témoin plus attrayante. Et rajouter une interface graphique pour le partage 
+de fichier.

@@ -1,0 +1,40 @@
+*************************************************************
+Compte Rendu Audit n°1 : 
+Le 25/04/2018 à 9h30 à L'UGA de Valence (site de Briffaut)
+Durée : 45min
+*************************************************************
+
+	Personnes présentes  : 
+Tous les membres du groupe : Louis REYNAUD, Pauline ALLEMAND, 
+Aurélien BOURRET, Anass DAEF, Ahlame DIOUAN, Fatou Aicha KANE, Nabil ESSAKKAY.
+Enseignants : Nadine MARCOS et Xavier GIROD
+
+
+A 9h30 Nous n'avions pas de travail à présenter puisque nous venions de commencer
+à travailler sur le projet. Nous avons donc demandé quelques précisions sur le sujet 
+et les différentes tâches à réaliser. 
+
+Nous avons choisi un chef de projet (Aurélien) et nous avons échangé nos adresses 
+mail. On a également décidé de creer un projet Github pour gerer nos versions.
+
+Après cet Audit nous avons passé la matinée a conceptualiser notre framework et a 
+élaborer une architecture viable pour celui ci. Puis, a 12h50, nous avons obtenu 
+un premier jet suffisamment complet pour demander un avis au maitre d'oeuvre.
+
+
+*************************************************************
+Compte Rendu Audit n°1 : (deuxième partie)
+Le 25/04/2018 à 12h50 à L'UGA de Valence (site de Briffaut)
+Durée : 20min
+*************************************************************
+	Personnes présentes  : 
+Tous les membres du groupe : Louis REYNAUD, Pauline ALLEMAND, 
+Aurélien BOURRET, Anass DAEF, Ahlame DIOUAN, Fatou Aicha KANE, Nabil ESSAKKAY.
+Enseignante : Nadine MARCOS 
+ 
+
+Nous sommes donc retournés voir Nadine MARCOS et lui avons présenté notre diagramme.
+Il en est ressorti que notre idée était globalement bonne, et notre diagramme assez 
+complet. Il fallait toutefois revoir la difference entre les types d'"Utilisateur" :
+Ils étaient peut etre trop semblables pour nécessiter deux types disctincts.
+

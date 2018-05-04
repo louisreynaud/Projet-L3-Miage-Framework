@@ -1,0 +1,49 @@
+****************************************************************************
+Compte Rendu Audit Cahier des charges : 
+Le 30/04/2018 à 13h00 à L'UGA de Valence (site de Briffaut) par skype
+Durée : 45min
+****************************************************************************
+
+	Personnes présentes  : 
+Tous les membres du groupe : Louis REYNAUD, Pauline ALLEMAND, 
+Aurélien BOURRET, Anass DAEF, Ahlame DIOUAN, Fatou Aicha KANE, Nabil ESSAKKAY.
+Laurence Thomas-Roldes
+
+
+
+Lors de cet audit, Mme Thomas-Roldes nous a fait quelques remarques sur notre cahier des charges : 
+
+Premièrement, il manquait de clarté : il aurait été plus compréhensible avec des diagrammes
+montrant l'architecture de notre framework et de notre application témoin ainsi que des schémas
+montrant les possibilités des différents utilisateurs.
+
+Deuxièmement, certaines parties de nos textes explicitant le framework et l'application témoin
+manquaient de précisions et de clarté. Un client ne connaissant pas l'application aurait eu un
+peu de mal a réelement comprendre nos concepts.
+
+Troisièmement, il manquait quelques éléments dans notre cahier des charges : les priorités de 
+développement,  les contraintes temporelles, les contraintes de développement...
+
+Il est ressorti que  les premières parties de notre cahier des charges étaient suffisamment 
+explicites et développées. Nos concepts semblaient intéréssants et leurs noms intrigants.
+
+
+********************************************
+Décisions prises à la suite de cet audit : 
+********************************************
+
+Après cet audit, nous nous sommes répartis différentes tâches.
+
+Louis REYNAUD et Pauline ALLEMAND se sont attelés aux modifications du cahier des charges  :
+Nous avons décidé de reprendre points par points notre cahier des charges afin d'y apporter plus de 
+clarté, notamment en explicitant plus nos paragraphes explicatifs, en y ajoutant des schémas... Nous
+y avons intégrer les contraintes du projet, les priorités de développement, ainsi que les diagrammes
+de notre framework et notre application témoin.
+
+Nabil ESSAKAY et Aurélien BOURRET se sont intéréssés aux technologies d'échanges client -serveur 
+que l'on pourrait utiliser dans nos logiciels. 
+
+Fatou Aicha KANE, Ahlame DIOUAN, et Anass DAEF se sont penchés sur quelques modifications 
+nécéssaires de nos architectures (à cause des contraintes temporelles), puis afin de ne pas perdre 
+de temps, se sont intéréssés à des interfaces graphiques que l'on pourrait utiliser à la fin du projet. 
+pour notre application témoin.
