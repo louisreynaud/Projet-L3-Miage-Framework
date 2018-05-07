@@ -28,8 +28,8 @@ public abstract class Conversation {
 	}
 	
 	
-	public void envoyerMessage(String contenu) {
-		Message m = new Message(null, contenu);
+	public void envoyerMessage(String contenu, int id) {
+		Message m = new Message(null, contenu, id);
 		
 	}
 	

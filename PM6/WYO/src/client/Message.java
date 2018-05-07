@@ -6,14 +6,14 @@ public class Message {
 	private String libMessage;
 	private String corpsMessage;
 	
-	public Message(String lib, String corps) {
+	public Message(String lib, String corps, int id) {
 		//TODO
 		//ADD ....
 		//SELECT MAX(id_msg) FROM message
 		
 		this.libMessage = lib;
 		this.corpsMessage = corps;
-		
+		this.idMessage = id;
 	}
 	
 	

@@ -1,14 +1,15 @@
 package client;
 
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public abstract class User {
 	
 	private String loginUser;
 	private String passwordUser;
 	private String nomUser;
-	private String prenomUser;
-	
+	private String prenomUser;	
 
 	public String getLogin() {
 		return loginUser;
@@ -44,7 +45,7 @@ public abstract class User {
 	
 	public Groupe creer_groupe(int id, String nom){
 		
-		return new Groupe(id, nom, 'this.loginUser);
+		return new Groupe(id, nom, this.loginUser);
 	}
 	
 	public  void seConnecter(){}
