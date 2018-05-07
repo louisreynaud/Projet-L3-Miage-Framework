@@ -1,23 +1,23 @@
 package client;
 
+import java.util.ArrayList;
+
 public abstract class Conversation {
 
-	private int idConversation;
-	private String nomConversation;
+	protected String nomConversation;
+	protected ArrayList<Message> listMsg;
 	
-	public Conversation(int id, String nom) {
-		this.setId(id);
+	public Conversation(String nom) {
 		this.setNom(nom);
-		
+		this.listMsg = new ArrayList<Message>();
 	}
 
+	/*
 	public int getId() {
 		return idConversation;
 	}
+	*/
 
-	public void setId(int idConversation) {
-		this.idConversation = idConversation;
-	}
 
 	public String getNom() {
 		return nomConversation;
@@ -27,26 +27,21 @@ public abstract class Conversation {
 		this.nomConversation = nomConversation;
 	}
 	
-	
-	public void envoyerMessage(String contenu) {
+	/*
+	public void envoyerMessage(String contenu) { // TODO doit être réécrit pour Publication
 		Message m = new Message(null, contenu);
 		
+	}*/
+	public abstract void supprimerConversation() ;
+	
+	
+	public void ajouterMessage(Message m) {
+		listMsg.add(m);
+		
 	}
 	
-	public String afficherMessage(Message m) {
-		return null;
-	}
-	
-	
-	/*
-	 * creerConversation() : A l'aide des outils (socket/RMI) 
-	 * 
-	 */
-	public abstract void creerConversation();
-	
-	public void supprimerConversation() {
-		
-		
+	public void supprimerMessage(int index) {
+		listMsg.remove(index);
 	}
 	
 	

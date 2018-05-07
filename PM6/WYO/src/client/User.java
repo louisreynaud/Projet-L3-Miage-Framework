@@ -42,11 +42,23 @@ public abstract class User {
 	
 	
 	
-	public  void seConnecter(){}
+	public void seConnecter(String login, String password){
+		// Vérification des paramètres sur la BD
+		// Gestion des sessions avec Java EE?
+		
+		
+	}
 	
-	public  void seDeconnecter(){}
+	public void seDeconnecter(){
+		// Virer les infos de session avec Java EE?
+		
+	}
 	
-	public void sInscrire(){}
+	public void sInscrire(String l, String pw, String n, String pr){
+		// INSERT INTO User (login, password, nom, prenom) VALUES l, pw, n, pr;
+		// ^ NE PAS OUBLIER de hasher le password !!!
+		
+	}
 	
 	public abstract void modifierProfil();
 	
