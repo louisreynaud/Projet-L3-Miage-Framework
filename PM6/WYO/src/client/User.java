@@ -1,5 +1,7 @@
 package client;
 
+
+
 public abstract class User {
 	
 	private String loginUser;
@@ -40,7 +42,10 @@ public abstract class User {
 		this.prenomUser = prenom;
 	}
 	
-	
+	public Groupe creer_groupe(int id, String nom){
+		
+		return new Groupe(id, nom, 'this.loginUser);
+	}
 	
 	public  void seConnecter(){}
 	
