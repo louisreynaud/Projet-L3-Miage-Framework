@@ -1,8 +1,4 @@
-package client;
 
-public class Groupe {
-
-}
 package client;
 
 import java.util.ArrayList;
