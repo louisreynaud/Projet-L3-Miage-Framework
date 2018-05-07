@@ -1,71 +1,71 @@
 ***************************************************************
-Compte Rendu Audit n°2 : 
-Le 03/04/2018 à 15h30 à L'UGA de Valence (site de Briffaut)
-Durée : 45min
+Compte Rendu Audit nÂ°2 : 
+Le 03/04/2018 Ã  15h30 Ã  L'UGA de Valence (site de Briffaut)
+DurÃ©e : 45min
 ***************************************************************
 
-	Personnes présentes  : 
+	Personnes prÃ©sentes  : 
 Tous les membres du groupe : Louis REYNAUD, Pauline ALLEMAND, 
-Aurélien BOURRET, Anass DAEF, Ahlame DIOUAN, Fatou Aicha KANE, Nabil ESSAKKAY.
+AurÃ©lien BOURRET, Anass DAEF, Ahlame DIOUAN, Fatou Aicha KANE, Nabil ESSAKKAY.
 Nadine MARCOS, Xavier Girod
 
 
 
 Lors de cet audit, Mme MARCOS et Mr GIROD nous ont d'abords fait quelques remarques sur la
 nouvelle version de notre cahier des charges : Il fallait faire ressortir la notion d'intranet,
-qui se comprenait en lisant les diagrammes de classes, mais n'était pas clairement expliquée. Il 
-manquait également les technologies que nous allions utiliser pour les échanges, les interfaces...
+qui se comprenait en lisant les diagrammes de classes, mais n'Ã©tait pas clairement expliquÃ©e. Il 
+manquait Ã©galement les technologies que nous allions utiliser pour les Ã©changes, les interfaces...
 
-Il faudrait égalemtn ajouter de l'adaptabilité au framework, notamment on y intégrant des abstractions. 
+Il faudrait Ã©galement ajouter de l'adaptabilitÃ© au framework, notamment on y intÃ©grant des abstractions. 
 
 
-Nous avons ensuite présenté aux maitres d'oeuvre un premier travail que nous avions réalisé : un
-échange de fichiers entre deux utilisateurs (sur deux machines différentes) via un système de 
+Nous avons ensuite prÃ©sentÃ© aux maitres d'oeuvre un premier travail que nous avions rÃ©alisÃ© : un
+Ã©change de fichiers entre deux utilisateurs (sur deux machines diffÃ©rentes) via un systÃ¨me de 
 sockets client-serveur-client.
-Sur le serveur se trouve une liste de fichiers téléchargeables par les deux utilisateurs. Si le
-client 1 veut partager un fichier avec le deuxième client, il se connecte au serveur et l'ajoute à la
-liste. Si le client 2 consulte la liste, il peux alors voir le nom du fichier ajouté par le client 1.
-Il peux ensuite le télécharger.
-Les fichiers ne sont pas enregistrés sur le serveur. ils restent sur les machines respectives des 
-utilisateurs. ils sont simplement mis à disposition des autres, qui peuvent les télecharger sans 
+Sur le serveur se trouve une liste de fichiers tÃ©lÃ©chargeables par les deux utilisateurs. Si le
+client 1 veut partager un fichier avec le deuxiÃ¨me client, il se connecte au serveur et l'ajoute Ã  la
+liste. Si le client 2 consulte la liste, il peux alors voir le nom du fichier ajoutÃ© par le client 1.
+Il peux ensuite le tÃ©lÃ©charger.
+Les fichiers ne sont pas enregistrÃ©s sur le serveur. ils restent sur les machines respectives des 
+utilisateurs. ils sont simplement mis Ã  disposition des autres, qui peuvent les tÃ©lecharger sans 
 demander d'autorisation.
-Ils ont trouvés que ce système était bien, et que nos arguments pour avoir ce partage de fichiers
-sans demande d'autorisation étaient convaincants. Il manquait néanmoins une interface graphique pour
+Ils ont trouvÃ©s que ce systÃ¨me Ã©tait bien, et que nos arguments pour avoir ce partage de fichiers
+sans demande d'autorisation Ã©taient convaincants. Il manquait nÃ©anmoins une interface graphique pour
 faciliter son utilisation.
 
 
-Après cela, nous avons également montré un deuxième concept que nous avons implémenté : une discussion
-instantanée qui fonctionne avec Java RMI. Il s'agit d'une conversation commune à un groupe d'utilisateur,
+AprÃ¨s cela, nous avons Ã©galement montrÃ© un deuxiÃ¨me concept que nous avons implÃ©mentÃ© : une discussion
+instantanÃ©e qui fonctionne avec Java RMI. Il s'agit d'une conversation commune Ã  un groupe d'utilisateur,
 mais avec laquelle on peut selectionner un membre du groupe en particulier pour lui envoyer un message
 que lui seul pourra voir.
-POurl'instant, ce système fonctionne avec plusieurs fenetres utilisateur sur une seule machine. Mais
-nous n'arrivons pas à l'adapter à des utilisateurs sur des machines différentes.
-On nous a conseillé d'en parler a notre conseiller technique : Mr Philippe MORAT.
+POurl'instant, ce systÃ¨me fonctionne avec plusieurs fenetres utilisateur sur une seule machine. Mais
+nous n'arrivons pas Ã  l'adapter Ã  des utilisateurs sur des machines diffÃ©rentes.
+On nous a conseillÃ© d'en parler a notre conseiller technique : Mr Philippe MORAT.
 
-Nous avons ensuite montré des interface réalisées grâce a java FX aux maitres d'oeuvre, qui ont validé 
+Nous avons ensuite montrÃ© des interface rÃ©alisÃ©es grÃ¢ce a java FX aux maitres d'oeuvre, qui ont validÃ© 
 ce travail.
 
 
 
 
 ********************************************
-Décisions prises à la suite de cet audit : 
+DÃ©cisions prises Ã  la suite de cet audit : 
 ********************************************
 
-Après cet audit, nous nous sommes répartis différentes tâches : 
+AprÃ¨s cet audit, nous nous sommes rÃ©partis diffÃ©rentes tÃ¢ches : 
 
-Nous avons décidé d'améliorer la précision de notre description du framework dans notre cahier des 
+Nous avons dÃ©cidÃ© d'amÃ©liorer la prÃ©cision de notre description du framework dans notre cahier des 
 charges afin de mieux cerner le concept d'intranet. 
 
 Nous avons ensuite fait un point sur les technologies que nous allions employer. Pour les interfaces,
- nous nous serviront de Java FX. Mais pour les échanges entre utilisateurs, nous hésitons encore entre
-Java RMI et des sockets clients-serveur. C'est pourquoi nous ne nous sommes pas encore fixés et nous 
-allons réaliser plus de tests.
+ nous nous serviront de Java FX. Mais pour les Ã©changes entre utilisateurs, nous hÃ©sitons encore entre
+Java RMI et des sockets clients-serveur. C'est pourquoi nous ne nous sommes pas encore fixÃ©s et nous 
+allons rÃ©aliser plus de tests.
 
-Nous avons ensuite sollicité l'ensemble du groupe afin de construire un plan de développement.
-Puis, la responsable de la communication avec les diiférents acteurs de notre projet (Fatou Aicha KANE)
-a envoyé un e mail a Philippe MORAT pour en savoir plus sur notre problème avec Java RMI.
+Nous avons ensuite sollicitÃ© l'ensemble du groupe afin de construire un plan de dÃ©veloppement.
+Puis, la responsable de la communication avec les difÃ©rents acteurs de notre projet (Fatou Aicha KANE)
+a envoyÃ© un e mail a Philippe MORAT pour en savoir plus sur notre problÃ¨me avec Java RMI.
 
-Concernant les interfaces, nous allons essayer de les améliorer un peu, avec plus de graphismes pour
-rendre notre application témoin plus attrayante. Et rajouter une interface graphique pour le partage 
+Concernant les interfaces, nous allons essayer de les amÃ©liorer un peu, avec plus de graphismes pour
+rendre notre application tÃ©moin plus attrayante. Et rajouter une interface graphique pour le partage 
 de fichier.
