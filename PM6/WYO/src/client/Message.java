@@ -2,6 +2,8 @@ package client;
 import java.sql.*;
 
 public class Message {
+
+	private final int idMessage;
 	private String libMessage;
 	private String corpsMessage;
 	private Date date_envoi;

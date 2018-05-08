@@ -16,10 +16,10 @@ public class Serveur_Socket {
 	private ServerSocket server;
 // last think I m goine to code 
 	public static void main(String[] args) throws IOException {
-		new Serveur_Socket(12345).run();
+		new Server_Socket(12345).run();
 	}
 
-	public Serveur_Socket(int port) {
+	public Server_Socket(int port) {
 		this.port = port;
 		this.clients = new ArrayList<PrintStream>();
 	}
@@ -54,10 +54,10 @@ public class Serveur_Socket {
 
 class ClientHandler implements Runnable {
 
-	private Serveur_Socket server;
+	private Server_Socket server;
 	private InputStream client;
 
-	public ClientHandler(Serveur_Socket server, InputStream client) {
+	public ClientHandler(Server_Socket server, InputStream client) {
 		this.server = server;
 		this.client = client;
 	}
