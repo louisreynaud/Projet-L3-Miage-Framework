@@ -9,7 +9,7 @@ import java.rmi.RemoteException;
 
 import serveur.IntEnvoiMessage;
 
-public class Client {
+public class Client_old {
 
   public static void main(String[] args) {
     System.out.println("Lancement du client");
