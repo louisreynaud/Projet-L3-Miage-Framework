@@ -13,9 +13,9 @@ public class Client_Socket {
 	private int port;
 	private String nickname;
 
-	public static void main(String[] args) throws UnknownHostException, IOException {
+/*	public static void main(String[] args) throws UnknownHostException, IOException {
 		new Client_Socket("127.0.0.1", 12345).run();
-	}
+	}*/
 
 	public Client_Socket(String host, int port) {
 		this.host = host;

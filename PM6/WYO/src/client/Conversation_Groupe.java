@@ -11,8 +11,6 @@ public class Conversation_Groupe extends Conversation {
 		this.g = g;
 
 	}
-
-
 	@Override
 	public void supprimerConversation() {
 		// TODO Auto-generated method stub
