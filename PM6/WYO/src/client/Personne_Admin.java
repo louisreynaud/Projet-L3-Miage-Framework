@@ -1,28 +1,10 @@
 package client;
 
-public class Personne_Admin extends Personne_Organisation{
+public class Personne_Admin extends Personne_Organisation {
 
-
-
-	@Override
-	public void modifierProfil() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cloreProfil() {
-		// TODO Auto-generated method stub
-		
+	public Personne_Admin(String login, String password, String nom, String prenom, String org) {
+		super(login, password, nom, prenom, org);
 	}
 	
-	public void creerUser() {}
-	
-	public void modifierUser() {}	
-	
-	public void supprimerUser() {}
-
-
-	
-
 }
+	
