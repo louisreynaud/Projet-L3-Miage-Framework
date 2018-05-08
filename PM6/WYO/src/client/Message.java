@@ -10,7 +10,7 @@ public class Message {
 		//TODO
 		//ADD ....
 		//SELECT MAX(id_msg) FROM message
-		
+		this.idMessage = id;
 		this.libMessage = lib;
 		this.corpsMessage = corps;
 		

@@ -15,10 +15,18 @@ public class Server_Socket {
 	private List<PrintStream> clients;
 	private ServerSocket server;
 // last think I m goine to code 
+<<<<<<< HEAD
 	/*public static void main(String[] args) throws IOException {
+=======
+	public static void main(String[] args) throws IOException {
+>>>>>>> branch 'master' of https://github.com/louisreynaud/Projet-L3-Miage-Framework
 		new Server_Socket(12345).run();
 	}
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> branch 'master' of https://github.com/louisreynaud/Projet-L3-Miage-Framework
 	public Server_Socket(int port) {
 		this.port = port;
 		this.clients = new ArrayList<PrintStream>();
