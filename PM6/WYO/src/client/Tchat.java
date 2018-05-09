@@ -1,5 +1,6 @@
 package client;
 
+import java.util.ArrayList;
 
 public class Tchat extends Conversation {
 	
@@ -7,7 +8,9 @@ public class Tchat extends Conversation {
 	private User u2;
 
 	public Tchat(int id, String nom, User u1, User u2) {
-		super(id, nom);
+		this.setIdConversation(id);
+		this.setNomConversation(nom);
+		this.setListMsg(new ArrayList<Message>());
 		this.u1 = u1;
 		this.u2 = u2;
 		
@@ -15,14 +18,12 @@ public class Tchat extends Conversation {
 
 
 
-	@Override
 	public void supprimerConversation() {
 		// TODO Auto-generated method stub
 	}
 
 
 
-	@Override
 	public void creerConversation() {
 		// TODO Auto-generated method stub
 		
