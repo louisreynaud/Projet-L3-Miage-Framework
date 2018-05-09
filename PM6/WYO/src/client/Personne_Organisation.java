@@ -1,35 +1,23 @@
 package client;
 
 public class Personne_Organisation extends User {
-
-	@Override
-	public void seConnecter() {
-		// TODO Auto-generated method stub
-		
+	protected String nomOrganisation;
+	
+	public Personne_Organisation(String login, String password, String nom, String prenom,String org) {
+		this.loginUser = login;
+		this.passwordUser = password;
+		this.nomUser = nom;
+		this.prenomUser = prenom ;
+		this.setNomOrganisation(org);
 	}
 
-	@Override
-	public void seDeconnecter() {
-		// TODO Auto-generated method stub
-		
+	public String getNomOrganisation() {
+		return nomOrganisation;
 	}
 
-	@Override
-	public void sInscrire() {
-		// TODO Auto-generated method stub
-		
+	public void setNomOrganisation(String nomOrganisation) {
+		this.nomOrganisation = nomOrganisation;
 	}
 
-	@Override
-	public void modifierProfil() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cloreProfil() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

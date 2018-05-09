@@ -1,55 +1,15 @@
 package client;
 
+import java.util.ArrayList;
+
 public abstract class Conversation {
-
-	private int idConversation;
-	private String nomConversation;
-	
-	public Conversation(int id, String nom) {
-		this.setId(id);
-		this.setNom(nom);
-		
-	}
-
-	public int getId() {
-		return idConversation;
-	}
-
-	public void setId(int idConversation) {
-		this.idConversation = idConversation;
-	}
-
-	public String getNom() {
-		return nomConversation;
-	}
-
-	public void setNom(String nomConversation) {
-		this.nomConversation = nomConversation;
-	}
-	
-	
-	public void envoyerMessage(String contenu, int id) {
-		Message m = new Message(null, contenu, id);
-		
-	}
-	
-	public String afficherMessage(Message m) {
-		return null;
-	}
-	
-	
-	/*
-	 * creerConversation() : A l'aide des outils (socket/RMI) 
-	 * 
-	 */
-	public abstract void creerConversation();
-	
-	public void supprimerConversation() {
-		
-		
-	}
-	
-	
-	
-	
+	protected int idConversation;
+	protected String nomConversation;
+	protected ArrayList<Message> listMsg;
+	public int getIdConversation() {return this.idConversation;}
+	public String getNomConversation() {return this.nomConversation;}
+	public ArrayList<Message> getListMsg(){return this.listMsg;}
+	public void setIdConversation(int id) {this.idConversation = id;}
+	public void setNomConversation(String nomConversation) {this.nomConversation = nomConversation;}
+	public void setListMsg(ArrayList<Message> listMsg) {this.listMsg = listMsg;}	
 }
