@@ -12,5 +12,5 @@ public abstract class User {
 	public void setLogin(String login) {this.loginUser = login;}
 	public void setPassword(String password) {this.passwordUser = password;}
 	public void setNom(String nom) {this.nomUser = nom;}
-	public void setPrenom(String prenom) {this.prenomUser = prenom;}		
+	public void setPrenom(String prenom) {this.prenomUser = prenom;}
 }
