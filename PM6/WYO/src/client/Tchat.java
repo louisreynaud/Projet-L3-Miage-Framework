@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class Tchat extends Conversation {
 	
-	private User u1;
-	private User u2;
+	private User u1; // utilisateur créateur de la conversation. Autrement dit l'expéditeur du premier message.
+	private User u2; // Utilisateur ajouté à la conversation.
 
 	/**
 	 * Constructeur de la classe.
