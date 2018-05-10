@@ -2,11 +2,23 @@ package client;
 
 import java.util.ArrayList;
 
+/**
+ * Classe héritant de Conversation. Représente un tchat entre deux utilisateurs.
+ * @author louis
+ *
+ */
 public class Tchat extends Conversation {
 	
 	private User u1;
 	private User u2;
 
+	/**
+	 * Constructeur de la classe.
+	 * @param id
+	 * @param nom
+	 * @param u1
+	 * @param u2
+	 */
 	public Tchat(int id, String nom, User u1, User u2) {
 		this.setIdConversation(id);
 		this.setNomConversation(nom);
@@ -15,23 +27,5 @@ public class Tchat extends Conversation {
 		this.u2 = u2;
 		
 	}
-
-
-
-	public void supprimerConversation() {
-		// TODO Auto-generated method stub
-	}
-
-
-
-	public void creerConversation() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
-	
-	
 
 }

@@ -69,5 +69,20 @@ public abstract class Conversation {
 		for(int msg=0; msg<listMsg.length; msg++){
 			this.listMsg.add(listMsg[msg]);
 		}
-	}	
+	}
+	
+	/**
+	 * Méthode permettant de supprimer une conversation de la base de donnée
+	 */
+	public void supprimerConversation() {
+		// TODO Auto-generated method stub
+	}
+
+
+	/**
+	 * Méthode permettant de supprimer une conversation de la base de données.
+	 */
+	public void creerConversation() {
+		// TODO Auto-generated method stub
+	}
 }

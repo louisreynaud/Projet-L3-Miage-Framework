@@ -25,19 +25,4 @@ public class Conversation_Groupe extends Conversation {
 		creerConversation();
 	}
 
-
-	/**
-	 * méthode permettant de supprimer une conversation de groupe de la base de données.
-	 */
-	public void supprimerConversation() {
-			
-	}
-	
-	/**
-	 * méthode permettant d'ajouter une conversation de groupe à la base de données.
-	 */
-	public void creerConversation() {
-		
-	}
-
 }
