@@ -2,28 +2,41 @@ package client;
 
 import java.util.ArrayList;
 
+/**
+ * Classe héritant de Conversation, ajoute la notion de groupe dans la conversation.
+ * @author louis
+ *
+ */
 public class Conversation_Groupe extends Conversation {
 	
-	private Groupe g;
+	private Groupe group;
 	
-
+	/**
+	 * Constructeur de la classe.
+	 * @param id
+	 * @param nom
+	 * @param g
+	 */
 	public Conversation_Groupe(int id, String nom, Groupe g) {
 		this.setIdConversation(id);
 		this.setNomConversation(nom);
 		this.setListMsg(new ArrayList<Message>());
-		this.g = g;
-
+		this.group = g;
+		creerConversation();
 	}
 
 
-
+	/**
+	 * méthode permettant de supprimer une conversation de groupe de la base de données.
+	 */
 	public void supprimerConversation() {
-		// TODO Auto-generated method stub
-		
+			
 	}
-
+	
+	/**
+	 * méthode permettant d'ajouter une conversation de groupe à la base de données.
+	 */
 	public void creerConversation() {
-		// TODO Auto-generated method stub
 		
 	}
 
