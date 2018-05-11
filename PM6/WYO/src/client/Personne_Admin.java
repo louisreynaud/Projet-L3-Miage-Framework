@@ -1,7 +1,7 @@
 package client;
 
 /**
- * Classe héritant de Personne_Organisation. Représente un Administrateur d'une organisation.
+ * Classe hï¿½ritant de Personne_Organisation. Reprï¿½sente un Administrateur d'une organisation.
  * @author louis
  *
  */
@@ -15,7 +15,7 @@ public class Personne_Admin extends Personne_Organisation {
 	 * @param prenom
 	 * @param org
 	 */
-	public Personne_Admin(String login, String password, String nom, String prenom, String org) {
+	public Personne_Admin(String login, String password, String nom, String prenom, int org) {
 		super(login, password, nom, prenom, org);
 	}
 	

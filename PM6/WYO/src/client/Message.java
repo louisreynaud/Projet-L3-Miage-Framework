@@ -2,7 +2,7 @@ package client;
 import java.sql.*;
 
 /**
- * Classe représentant le concept de message. Ils sont composés d'un id, d'un libellé, d'un corps, d'une date d'envoi et d'un auteur.
+ * Classe reprï¿½sentant le concept de message. Ils sont composï¿½s d'un id, d'un libellï¿½, d'un corps, d'une date d'envoi et d'un auteur.
  * @author louis
  *
  */
@@ -16,20 +16,37 @@ public class Message {
 	
 	/**
 	 * Constructeur de la classe.
+	 * @param i 
 	 * @param libMsg
 	 * @param corpsMsg
 	 * @param dateMsg
 	 * @param u
 	 */
-	public Message(String libMsg, String corpsMsg, Date dateMsg, User u){
+	public Message(int i, String libMsg, String corpsMsg, Date dateMsg, User u){
+		this.idMessage = i;
 		this.libMessage = libMsg;
 		this.corpsMessage = corpsMsg;
 		this.date_envoi = dateMsg;
 		this.auteur = u;
 	}
-	
+	public Message( String libMsg, String corpsMsg, Date dateMsg, User u){
+		this.libMessage = libMsg;
+		this.corpsMessage = corpsMsg;
+		this.date_envoi = dateMsg;
+		this.auteur = u;
+	}
 	/**
-	 * Méthode retournant le libellé du message.
+	 * mÃ©thode retournant l'id du message
+	 * @return id_message
+	 */
+	public int getIdMessage() {return this.idMessage;}
+	/**
+	 * mÃ©thode permet de mettre a jout l'id du message
+	 * @param id
+	 */
+	public void setIdMessage(int id) {this.idMessage = id;}
+	/**
+	 * Mï¿½thode retournant le libellï¿½ du message.
 	 * @return
 	 */
 	public String getLib() {
@@ -37,7 +54,7 @@ public class Message {
 	}
 	
 	/**
-	 * Méthode retournant le corps du message.
+	 * Mï¿½thode retournant le corps du message.
 	 * @return
 	 */
 	public String getCorps() {	
@@ -45,7 +62,7 @@ public class Message {
 	}
 	
 	/**
-	 * Méthode retournant le date d'envoi du message.
+	 * Mï¿½thode retournant le date d'envoi du message.
 	 * @return
 	 */
 	public Date getDate_envoi() {
@@ -53,7 +70,7 @@ public class Message {
 	}
 	
 	/**
-	 * Méthode retournant l'auteur du message.
+	 * Mï¿½thode retournant l'auteur du message.
 	 * @return
 	 */
 	public User getAuteur() {
@@ -61,7 +78,7 @@ public class Message {
 	}
 	
 	/**
-	 * Méthode mettant à jour le libellé du message.
+	 * Mï¿½thode mettant ï¿½ jour le libellï¿½ du message.
 	 * @param libMessage
 	 */
 	public void setLib(String libMessage) {
@@ -69,7 +86,7 @@ public class Message {
 	}
 	
 	/**
-	 * Méthode mettant à jour le corps du message.
+	 * Mï¿½thode mettant ï¿½ jour le corps du message.
 	 * @param corpsMessage
 	 */
 	public void setCorps(String corpsMessage) {	
@@ -77,7 +94,7 @@ public class Message {
 	}
 	
 	/**
-	 * Méthode mettant à jour la date d'envoi du message.
+	 * Mï¿½thode mettant ï¿½ jour la date d'envoi du message.
 	 * @param date_envoi
 	 */
 	public void setDate_envoi(Date date_envoi) {
@@ -85,7 +102,7 @@ public class Message {
 	}
 	
 	/**
-	 * Méthode mettant à jour l'auteur du message.
+	 * Mï¿½thode mettant ï¿½ jour l'auteur du message.
 	 * @param a
 	 */
 	public void setAuteur(User a) {

@@ -1,12 +1,12 @@
 package client;
 
 /**
- * Classe héritant de User. Représente un utilisateur membre d'une organisation.
+ * Classe hï¿½ritant de User. Reprï¿½sente un utilisateur membre d'une organisation.
  * @author louis
  *
  */
 public class Personne_Organisation extends User {
-	protected String nomOrganisation;
+	protected int organisation;
 	
 	/**
 	 * Constructeur de la classe.
@@ -16,28 +16,28 @@ public class Personne_Organisation extends User {
 	 * @param prenom
 	 * @param org
 	 */
-	public Personne_Organisation(String login, String password, String nom, String prenom,String org) {
+	public Personne_Organisation(String login, String password, String nom, String prenom,int org) {
+
 		this.loginUser = login;
 		this.passwordUser = password;
 		this.nomUser = nom;
 		this.prenomUser = prenom ;
-		this.setNomOrganisation(org);
+		this.organisation = org;
 	}
-	
 	/**
-	 * Méthode retournant le nom de l'organisation.
+	 * Mï¿½thode retournant le nom de l'organisation.
 	 * @return
 	 */
-	public String getNomOrganisation() {
-		return nomOrganisation;
+	public int getOrganisation() {
+		return organisation;
 	}
 	
 	/**
-	 * Méthode mettant à jour le nom de l'organisation.
-	 * @param nomOrganisation
+	 * Mï¿½thode mettant ï¿½ jour le nom de l'organisation.
+	 * @param org
 	 */
-	public void setNomOrganisation(String nomOrganisation) {
-		this.nomOrganisation = nomOrganisation;
+	public void setOrganisation(int org) {
+		this.organisation = org;
 	}
 
 	

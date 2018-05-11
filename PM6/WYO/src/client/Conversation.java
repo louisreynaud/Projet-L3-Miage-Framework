@@ -2,19 +2,23 @@ package client;
 
 import java.util.ArrayList;
 
+import database.ConnectionManager;
+
+import java.sql.*;
+
 /**
- * Classe abstraite représentant une conversation générale.
+ * Classe abstraite reprï¿½sentant une conversation gï¿½nï¿½rale.
  * @author louis
  *
  */
 public abstract class Conversation {
-
+	Connection conn ;
 	protected int idConversation;   
 	protected String nomConversation;
 	protected ArrayList<Message> listMsg; //liste contenant les messages de la conversation.	
 	
 	/**
-	 * méthode retournant l'id de la conversation
+	 * mï¿½thode retournant l'id de la conversation
 	 * @return int idConversation
 	 */
 	public int getIdConversation() {
@@ -22,7 +26,7 @@ public abstract class Conversation {
 	}
 	
 	/**
-	 * méthode retournant le nom de la conversation
+	 * mï¿½thode retournant le nom de la conversation
 	 * @return String nomConversation
 	 */
 	public String getNomConversation() {
@@ -30,7 +34,7 @@ public abstract class Conversation {
 	}
 	
 	/**
-	 * méthode retournant la liste des messages de la conversation
+	 * mï¿½thode retournant la liste des messages de la conversation
 	 * @return ArrayList<Message>
 	 */
 	public ArrayList<Message> getListMsg(){
@@ -38,7 +42,7 @@ public abstract class Conversation {
 	}
 	
 	/**
-	 * méthode mettant à jour l'id de la conversation avec le paramètre.
+	 * mï¿½thode mettant ï¿½ jour l'id de la conversation avec le paramï¿½tre.
 	 * @param id
 	 */
 	public void setIdConversation(int id) {
@@ -46,7 +50,7 @@ public abstract class Conversation {
 	}
 	
 	/**
-	 * méthode mettant à jour le nom de la conversation avec le paramètre.
+	 * mï¿½thode mettant ï¿½ jour le nom de la conversation avec le paramï¿½tre.
 	 * @param nomConversation
 	 */
 	public void setNomConversation(String nomConversation) {
@@ -54,7 +58,7 @@ public abstract class Conversation {
 	}
 	
 	/**
-	 * méthode mettant à jour la liste des messages de la conversation avec le paramètre.
+	 * mï¿½thode mettant ï¿½ jour la liste des messages de la conversation avec le paramï¿½tre.
 	 * @param listMsg
 	 */
 	public void setListMsg(ArrayList<Message> listMsg) {
@@ -62,12 +66,13 @@ public abstract class Conversation {
 	}	
 	
 	/**
-	 * méthode ajoutant les éléments en paramètres dans la liste des messages de la conversation.  
+	 * mï¿½thode ajoutant les ï¿½lï¿½ments en paramï¿½tres dans la liste des messages de la conversation.  
 	 * @param listMsg
 	 */
 	public void setListMsg(Message... listMsg) {
 		for(int msg=0; msg<listMsg.length; msg++){
 			this.listMsg.add(listMsg[msg]);
-		}
 	}	
+
+	}
 }
