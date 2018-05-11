@@ -72,7 +72,26 @@ public abstract class Conversation {
 	public void setListMsg(Message... listMsg) {
 		for(int msg=0; msg<listMsg.length; msg++){
 			this.listMsg.add(listMsg[msg]);
+<<<<<<< HEAD
 	}	
 
+=======
+		}
+	}
+	
+	/**
+	 * Méthode permettant de supprimer une conversation de la base de donnée
+	 */
+	public void supprimerConversation() {
+		// TODO Auto-generated method stub
+	}
+
+
+	/**
+	 * Méthode permettant de supprimer une conversation de la base de données.
+	 */
+	public void creerConversation() {
+		// TODO Auto-generated method stub
+>>>>>>> branch 'master' of https://github.com/louisreynaud/Projet-L3-Miage-Framework.git
 	}
 }

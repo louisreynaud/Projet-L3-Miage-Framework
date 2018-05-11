@@ -16,12 +16,14 @@ public class Evenement extends Publication{
 	/**
 	 * Constructeur de la classe.
 	 * @param id
-	 * @param nom
+	 * @param titre
 	 * @param nbParticipants
 	 * @param description
 	 */
-	public Evenement(int id, String nom, int nbParticipants, String description){
-		super(id, nom, description);
+	public Evenement(int id, String titre, int nbParticipants, String description){
+		setId(id);
+		setTitre(titre);
+		setDescription(description);
 		this.nbParticipants = nbParticipants;
 	}
 	
