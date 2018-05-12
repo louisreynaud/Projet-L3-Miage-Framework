@@ -1,21 +1,24 @@
 package client;
 
 /**
- * Classe héritant de Conversation. Représente une Publication.
+ * Classe hï¿½ritant de Conversation. Reprï¿½sente une Publication.
  * @author louis
  *
  */
 public abstract class Publication extends Conversation{
 
-	private int idPublication;
-	private String titrePublication;
-	private String descriptionPublication;
+	protected int idPublication;
+	protected String titrePublication;
+	protected String descriptionPublication;
+	protected Personne_Organisation po;
 	
-	public int getId(){return this.idPublication;}
+	public int getIdPublication(){return this.idPublication;}
 	
-	public String getTitre(){return this.titrePublication;}
+	public String getTitrePublication(){return this.titrePublication;}
 	
-	public String getDescription(){return this.descriptionPublication;}
+	public String getDescriptionPublication(){return this.descriptionPublication;}
+	
+	public Personne_Organisation getAuteur() {return this.po;}
 	
 	public void setId(int id){this.idPublication = id;}
 	
@@ -23,6 +26,5 @@ public abstract class Publication extends Conversation{
 	
 	public void setDescription(String description){this.descriptionPublication = description;}
 	 
-	
-	
+	public void setAuteur(Personne_Organisation po) {this.po = po;}
 }

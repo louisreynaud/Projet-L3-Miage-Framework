@@ -1,7 +1,7 @@
 package client;
 
 /**
- * Classe abstraite représentant les utilisateurs.
+ * Classe abstraite reprï¿½sentant les utilisateurs.
  * @author louis
  *
  */
@@ -18,7 +18,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode retournant l'identifiant de l'utilisateur.
+	 * mï¿½thode retournant l'identifiant de l'utilisateur.
 	 * @return
 	 */
 	public String getLogin() {
@@ -26,7 +26,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode retournant le mot de passe de l'utilisateur.
+	 * mï¿½thode retournant le mot de passe de l'utilisateur.
 	 * @return
 	 */ 
 	public String getPassword() {
@@ -34,7 +34,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode retournant le nom de l'utilisateur.
+	 * mï¿½thode retournant le nom de l'utilisateur.
 	 * @return
 	 */
 	public String getNom() {
@@ -42,7 +42,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode retournant le prénom de l'utilisateur.
+	 * mï¿½thode retournant le prï¿½nom de l'utilisateur.
 	 * @return
 	 */
 	public String getPrenom() {
@@ -50,7 +50,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode mettant à jour l'identifiant de l'utilisateur.
+	 * mï¿½thode mettant ï¿½ jour l'identifiant de l'utilisateur.
 	 * @param login
 	 */
 	public void setLogin(String login) {
@@ -58,7 +58,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode mettant à jour le mot de passe de l'utilisateur.
+	 * mï¿½thode mettant ï¿½ jour le mot de passe de l'utilisateur.
 	 * @param password
 	 */
 	public void setPassword(String password) {
@@ -66,7 +66,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode mettant à jour le nom de l'utilisateur.
+	 * mï¿½thode mettant ï¿½ jour le nom de l'utilisateur.
 	 * @param nom
 	 */
 	public void setNom(String nom) {
@@ -74,11 +74,19 @@ public abstract class User {
 	}
 	
 	/**
-	 * méthode mettant à jour le prénom de l'utilisateur.
+	 * mï¿½thode mettant ï¿½ jour le prï¿½nom de l'utilisateur.
 	 * @param prenom
 	 */
 	public void setPrenom(String prenom) {
 		this.prenomUser = prenom;
+	}
+	
+	/**
+	 * mÃ©thode mettant a jour l'id de l'utilisateur
+	 * @param id : id du user
+	 */
+	public void setId(int id) {
+		this.idUser  =id;
 	}
 
 }

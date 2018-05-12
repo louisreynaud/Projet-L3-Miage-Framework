@@ -3,14 +3,15 @@ package client;
 import java.util.*;
 
 /**
- * Classe héritant de Publication, représente le concept d'Evenement.
+ * Classe hï¿½ritant de Publication, reprï¿½sente le concept d'Evenement.
  * @author louis
  *
  */
 public class Evenement extends Publication{
 	
 	private int nbParticipants;
-	private ArrayList<User> participants;	//liste des participants à l'evenement.
+	private int participe;
+	private ArrayList<User> participants;	//liste des participants ï¿½ l'evenement.
 	
 	
 	/**
@@ -27,8 +28,15 @@ public class Evenement extends Publication{
 		this.nbParticipants = nbParticipants;
 	}
 	
+	public Evenement (String titre, String desc, boolean p )
+	{
+		this.titrePublication = titre;
+		this.descriptionPublication = desc;
+		if (p == true) { this.setParticipe(1);}
+		else {this.setParticipe(0);}			
+	}
 	/**
-	 * Méthode ajoutant un utilisateur à la liste des participants de l'evenement.
+	 * Mï¿½thode ajoutant un utilisateur ï¿½ la liste des participants de l'evenement.
 	 * @param actualUser
 	 */
 	public void accepterEvent(User actualUser){
@@ -36,11 +44,20 @@ public class Evenement extends Publication{
 	}
 	
 	/**
-	 * Méthode retirant un utilisateur de la liste des participants de l'evenement.
+	 * Mï¿½thode retirant un utilisateur de la liste des participants de l'evenement.
 	 * @param actualUser
 	 */
 	public void refuserEvent(User actualUser){
 		participants.remove(actualUser);
 	}
+
+	public int getParticipe() {
+		return participe;
+	}
+
+	public void setParticipe(int participe) {
+		this.participe = participe;
+	}
+
 }
 
