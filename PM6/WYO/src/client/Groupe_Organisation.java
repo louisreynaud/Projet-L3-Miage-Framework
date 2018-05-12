@@ -1,20 +1,24 @@
 package client;
 
 /**
- * Classe héritant de Groupe, représente le concept de Groupe d'Organisation.
+ * Classe hï¿½ritant de Groupe, reprï¿½sente le concept de Groupe d'Organisation.
  * @author louis
  *
  */
 public class Groupe_Organisation extends Groupe {
-
 	/**
 	 * Constructeur de la classe. 
 	 * @param id
-	 * @param nom
-	 * @param login_createur
+	 * @param nom : organisation
+	 * @param createur : administrateur du groupe
 	 */
-	public Groupe_Organisation(int id, String nom, Personne_Organisation login_createur) {
-		super(id, nom, login_createur);
+	public Groupe_Organisation( String nom, Personne_Admin createur) {
+		super(nom, createur);
+		// TODO Auto-generated constructor stub
 	}
+	
+
+
+
 
 }

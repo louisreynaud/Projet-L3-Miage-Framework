@@ -4,14 +4,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
+
+import client.Evenement;
+import client.Groupe;
 import client.Groupe_Organisation;
 import client.Message;
 import client.Personne_Admin;
 import client.Personne_Organisation;
 import client.Personne_Publique;
 import client.Tchat;
+import client.Topic;
 import client.User;
 
 public class ConnectionManager {
@@ -96,7 +101,7 @@ public class ConnectionManager {
 	 * @param pp de type Personne_Publique
 	 * @param conn
 	 */
-	public static void AddUserPublic_bd(Personne_Publique pp, Connection conn) {
+	public static void AddUserPublic_db(Personne_Publique pp, Connection conn) {
 		conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		ResultSet rs;
@@ -112,7 +117,7 @@ public class ConnectionManager {
             rs = pst.getGeneratedKeys();
             if(rs.next()) {
             	id = rs.getInt(1);
-            	AddUserPublicto_bd(id, conn);
+            	AddUserPublicto_db(id, conn);
             }else {System.out.println("out of boundries!!!!");}
             rs.close();
             pst.close();
@@ -126,7 +131,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void AddUserPublicto_bd(int id,Connection conn)
+	private static void AddUserPublicto_db(int id,Connection conn)
 	{
 		PreparedStatement pst = null;
 		try{
@@ -141,7 +146,7 @@ public class ConnectionManager {
 	 * @param po de type Personne_Organisation
 	 * @param conn
 	 */
-	public static void AddUserOrganisation_bd(Personne_Organisation po, Connection conn) {
+	public static void AddUserOrganisation_db(Personne_Organisation po, Connection conn) {
 		conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		ResultSet rs;
@@ -157,7 +162,7 @@ public class ConnectionManager {
             rs = pst.getGeneratedKeys();
             if(rs.next()) {
             	id = rs.getInt(1);
-            	AddUserOrgto_bd(id, po.getOrganisation(),conn);
+            	AddUserOrgto_db(id, po.getOrganisation(),conn);
             }else {System.out.println("out of boundries!!!!");}
             rs.close();
             pst.close();
@@ -171,7 +176,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void AddUserOrgto_bd(int id, int org , Connection conn)
+	private static void AddUserOrgto_db(int id, int org , Connection conn)
 	{
 		PreparedStatement pst = null;
 		try{
@@ -181,7 +186,7 @@ public class ConnectionManager {
             System.out.println("User ajouté dans la table Utilisateur Organisation ");
         }catch(Exception e){System.out.println("Erreur d'ajout dans la base des user Org, l'Exception est : " + e.toString());}
 	}
-	public static void AddUserAdmin_bd(Personne_Admin pa, Connection conn) {
+	public static void AddUserAdmin_db(Personne_Admin pa, Connection conn) {
 		conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		ResultSet rs;
@@ -197,7 +202,7 @@ public class ConnectionManager {
             rs = pst.getGeneratedKeys();
             if(rs.next()) {
             	id = rs.getInt(1);
-            	AddUserAdminto_bd(id, pa.getOrganisation(),conn);
+            	AddUserAdminto_db(id, pa.getOrganisation(),conn);
             }else {System.out.println("out of boundries!!!!");}
             rs.close();
             pst.close();
@@ -211,7 +216,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void AddUserAdminto_bd(int id, int org , Connection conn)
+	private static void AddUserAdminto_db(int id, int org , Connection conn)
 	{
 		PreparedStatement pst = null;
 		try{
@@ -253,8 +258,8 @@ public class ConnectionManager {
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("update organisation set nom_groupe = ? where id_organisation = ?;");
-            pst.setString(1, grp.getNom_groupe());
-            pst.setInt(2, grp.getId_groupe());
+            pst.setString(1, grp.getNomGroupe());
+            pst.setInt(2, grp.getIdGroupe());
             pst.executeUpdate();
             System.out.println("Grp modifi� dans la table Organisation");
         }catch(Exception e){System.out.println("Erreur modification dans la base des organisations, l'Exception est : " + e.toString());}
@@ -278,6 +283,64 @@ public class ConnectionManager {
         }catch(Exception e){System.out.println("Erreur suppression dans la base des user, l'Exception est : " + e.toString());}
 	}
 
+	/**
+	 * Méthode permettant d'ajouter une organisation dans la base de données
+	 * @param org :  organisation
+	 * @param conn : connection
+	 */
+	public static void AddOrganisation_db(Groupe_Organisation org, Connection conn){
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("insert into Organisation (nom_organisation, id_user) values (? , ?);");
+			pst.setString(1, org.getNomGroupe());
+			pst.setInt(2, org.getCreateur().getId());
+			pst.executeUpdate();
+			System.out.println("Organisation ajouté ");
+		} catch (SQLException e) {
+			System.out.println("oups une exception!!");
+			System.out.println(e.toString());
+		}
+		
+	}
+	/**
+	 * Méthode permettant d'ajouter un groupe dans la base de données
+	 * @param grp :  Groupe
+	 * @param conn : connection
+	 */
+	
+	public static void AddGroupe_db(Groupe grp, Connection conn){
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("insert into Groupe (nom_groupe, id_user) values (? , ?);");
+			pst.setString(1, grp.getNomGroupe());
+			pst.setInt(2, grp.getCreateur().getId());
+			pst.executeUpdate();
+			System.out.println("Organisation ajouté ");
+		} catch (SQLException e) {
+			System.out.println("oups une exception!!");
+			System.out.println(e.toString());
+		}
+		
+	}
+	/**
+	 * méthode permettant d'enregistrer les membres des groupes.
+	 * @param u utilisateur
+	 * @param grp groupe
+	 * @param conn Connection
+	 */
+	public static void AddMembreGroupe_db(User u , Groupe grp, Connection conn) {
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("insert into MembreGroupe (id_groupe, id_user) values (? , ?);");
+			pst.setInt(1, grp.getIdGroupe());
+			pst.setInt(2, u.getId());
+			pst.executeUpdate();
+			System.out.println("Membre ajouté");
+		} catch (SQLException e) {
+			System.out.println("oups une exception!!");
+			System.out.println(e.toString());
+		}
+	}
 	
 	
 	/**
@@ -291,7 +354,7 @@ public class ConnectionManager {
 		try{
             pst = conn.prepareStatement("delete from organisation where id_organisation = ?;");
 
-            pst.setInt(1, grp.getId_groupe());
+            pst.setInt(1, grp.getIdGroupe());
             pst.executeUpdate();
             System.out.println("Grp supprim� dans la table Organisation");
         }catch(Exception e){System.out.println("Erreur suppression dans la base des organisations, l'Exception est : " + e.toString());}
@@ -350,4 +413,82 @@ public class ConnectionManager {
 	
 		
 
+	/**
+	 * méthode permettant d'enregistrer un topic
+	 * @param t topic
+	 * @param conn Connection
+	 */
+	public static void AddTopic_db(Topic t, Connection conn) {
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("insert into Topic (sujet_topic, id_user) values ( ? , ?);");
+			pst.setString(1, t.getTitrePublication());
+			pst.setInt(2, t.getAuteur().getId());
+			pst.executeUpdate();
+			System.out.println("Topic ajouté");
+		} catch (SQLException e) {
+			System.out.println("oups une exception!!");
+			System.out.println(e.toString());
+		}
+	}
+	
+	
+	/**
+	 * méthode permettant d'enregistrer un evenement
+	 * @param event : evenement
+	 * @param m msg
+	 * @param conn Connection
+	 */
+	public static void AddEvenement_db(Evenement event, Connection conn) {
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("insert into Evenement (nom_event , description_event) values ( ? , ?);");
+			pst.setString(1, event.getTitrePublication());
+			pst.setString(2, event.getDescriptionPublication());
+			pst.executeUpdate();
+			System.out.println("Echange Evenement ajouté");
+		} catch (SQLException e) {
+			System.out.println("oups une exception!!");
+			System.out.println(e.toString());
+		}
+	}
+	/**
+	 * méthode permettant d'enregistrer les echanges de messages dans un topic
+	 * @param t topic
+	 * @param m msg
+	 * @param conn Connection
+	 */
+	public static void AddEchangeTopic_db(Topic t, Message msg ,Connection conn) {
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("insert into EchangeTopic (id_topic, id_msg) values ( ? , ?);");
+			pst.setInt(1, t.getIdPublication());
+			pst.setInt(2, msg.getIdMessage());
+			pst.executeUpdate();
+			System.out.println("Echange Topic ajouté");
+		} catch (SQLException e) {
+			System.out.println("oups une exception!!");
+			System.out.println(e.toString());
+		}
+	}
+	/**
+	 * méthode permettant d'enregistrer les participations des utilisateurs
+	 * @param event : Evenement
+	 * @param msg : Message
+	 * @param conn : Connection
+	 */
+	public static void AddParticipationEvent_db(Evenement event, User user ,Connection conn) {
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("insert into ParticipationEvent (id_event, id_user , participe) values (?, ? , ?);");
+			pst.setInt(1, event.getIdPublication());
+			pst.setInt(2, user.getId());
+			pst.setInt(3, event.getParticipe());
+			pst.executeUpdate();
+			System.out.println("Participation event ajouté");
+		} catch (SQLException e) {
+			System.out.println("oups une exception!!");
+			System.out.println(e.toString());
+		}
+	}
 }

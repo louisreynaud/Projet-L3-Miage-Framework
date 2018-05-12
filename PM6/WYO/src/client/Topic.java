@@ -3,7 +3,7 @@ package client;
 import java.util.ArrayList;
 
 /**
- * Classe héritant de Publication. Représente les topics.
+ * Classe hï¿½ritant de Publication. Reprï¿½sente les topics.
  * @author louis
  *
  */
@@ -16,11 +16,13 @@ public class Topic extends Publication {
 	 * @param description
 	 * @param listMSG
 	 */
-	public Topic(int id, String titre, String description, ArrayList<Message> listMSG){
-		setId(id);
-		setTitre(titre);
-		setDescription(description);
+	public Topic(int id, String titre, ArrayList<Message> listMSG){
+		this.idPublication = id;
+		this.titrePublication = titre;		
 		this.setListMsg(listMsg);
 	}
-	
+	public Topic(String titre, Personne_Organisation po){
+		this.titrePublication = titre;
+		this.po = po;
+	}
 }

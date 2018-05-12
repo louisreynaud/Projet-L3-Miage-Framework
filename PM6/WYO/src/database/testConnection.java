@@ -13,6 +13,7 @@ import client.Personne_Organisation;
 import client.Personne_Publique;
 import client.Tchat;
 import client.User;
+import client.Groupe_Organisation;
 
 public class testConnection {
 
@@ -36,8 +37,9 @@ public class testConnection {
 		PreparedStatement pst = null;
 		String query="insert into Utilisateur (nom_user, prenom_user, login, mot_de_passe) values (?, ? , ? , ? , ?);";
 		int id_user = 0;
-		ConnectionManager.AddUserAdmin_bd(u1, conn);
-			
+		//ConnectionManager.AddUserAdmin_bd(u1, conn);
+		Groupe_Organisation o = new Groupe_Organisation ("Stark's Industries",u1);
+		//ConnectionManager.AddOrganisation_bd(o, conn);
 		/*  try{
             pst = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, pp.getNom());
