@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 /**
  * Classe repr�sentant des groupes d'utilisateurs.
- * @author louis
  *
  */
 public class Groupe {

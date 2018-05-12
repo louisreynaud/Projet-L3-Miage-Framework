@@ -17,7 +17,12 @@ import client.Personne_Publique;
 import client.Tchat;
 import client.Topic;
 import client.User;
-
+/**
+ * Classe ConnectionManager gère la connexion du framework à sa base de données et contient des méthodes pour dialoguer avec 
+ * cette dernière
+ * @author daef
+ *
+ */
 public class ConnectionManager {
 	/**
 	 * Méthode permet la connexion à la base de données
@@ -370,4 +375,13 @@ public class ConnectionManager {
 			System.out.println(e.toString());
 		}
 	}
+	/*
+	public static Personne_Publique SelectUsers_db(String query, Connection conn) throws SQLException {
+		Personne_Publique pp = null ;
+		Statement stm = conn.createStatement();
+		ResultSet rs = stm.executeQuery(query);
+		while (rs.next()){return pp;}
+		return pp;
+		
+	}*/
 }
