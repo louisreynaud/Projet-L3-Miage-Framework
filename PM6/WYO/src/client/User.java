@@ -6,28 +6,16 @@ package client;
  *
  */
 public abstract class User {
-<<<<<<< HEAD
 	protected int idUser;
 	protected String loginUser;
-=======
-	
-	protected String loginUser; // Login est un identifiant unique
->>>>>>> branch 'master' of https://github.com/louisreynaud/Projet-L3-Miage-Framework.git
 	protected String passwordUser;
 	protected String nomUser;
 	protected String prenomUser;
-<<<<<<< HEAD
-	public int getId() {return idUser;}
-	public String getLogin() {return loginUser;}
-	public String getPassword() {return passwordUser;}
-	public String getNom() {return nomUser;}
-	public String getPrenom() {return prenomUser;}
-	public void setId(int id) {this.idUser = id;}
-	public void setLogin(String login) {this.loginUser = login;}
-	public void setPassword(String password) {this.passwordUser = password;}
-	public void setNom(String nom) {this.nomUser = nom;}
-	public void setPrenom(String prenom) {this.prenomUser = prenom;}
-=======
+	
+	
+	public int getId() {
+		return this.idUser;
+	}
 	
 	/**
 	 * méthode retournant l'identifiant de l'utilisateur.
@@ -40,7 +28,8 @@ public abstract class User {
 	/**
 	 * méthode retournant le mot de passe de l'utilisateur.
 	 * @return
-	 */ String getPassword() {
+	 */ 
+	public String getPassword() {
 		return passwordUser;
 	}
 	
@@ -91,6 +80,6 @@ public abstract class User {
 	public void setPrenom(String prenom) {
 		this.prenomUser = prenom;
 	}
->>>>>>> branch 'master' of https://github.com/louisreynaud/Projet-L3-Miage-Framework.git
+
 }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="CSI_chat/Client_CSI/src"/>
+	<classpathentry kind="src" path="CSI_chat/Pag_CSI/src"/>
+	<classpathentry kind="src" path="CSI_chat/Server_CSI/src"/>
+	<classpathentry kind="src" path="PM6/WYO/src"/>
+	<classpathentry kind="lib" path="CSI_chat/Pag_CSI/lib/common-lang3.jar"/>
+	<classpathentry kind="lib" path="CSI_chat/Server_CSI/lib/java-json.jar"/>
+	<classpathentry kind="lib" path="PM6/WYO/sqlite-jdbc-3.21.0.jar"/>
+	<classpathentry kind="lib" path="sqlite-jdbc-3.21.0.jar"/>
+	<classpathentry kind="output" path="CSI_chat/Client_CSI/bin"/>
+</classpath>
