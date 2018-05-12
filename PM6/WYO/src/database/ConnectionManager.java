@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import client.Groupe_Organisation;
 import client.Message;
 import client.Personne_Admin;
 import client.Personne_Organisation;
 import client.Personne_Publique;
 import client.Tchat;
+import client.User;
 
 public class ConnectionManager {
 	/**
@@ -220,7 +222,132 @@ public class ConnectionManager {
         }catch(Exception e){System.out.println("Erreur d'ajout dans la base des user Admin, l'Exception est : " + e.toString());}
 	}
 
+	/**
+	 * MÃ©thode utilisÃ© pour modifier un utilisateur quelconque
+	 * @param id : Id de l'utilisateur
+	 * @param conn
+	 */
+	public static void ModifyUserto_bd(User u,Connection conn)
+	{
+		PreparedStatement pst = null;
+		try{
+            pst = conn.prepareStatement("update utilisateur set nom_user = ?, prenom_user = ?, login = ?, mot_de_passe = ? where id_user = ?;");
+            pst.setString(1, u.getNom());
+            pst.setString(2, u.getPrenom());
+            pst.setString(3, u.getLogin());
+            pst.setString(4, u.getPassword());
+            pst.setInt(5, u.getId());
+            pst.executeUpdate();
+            System.out.println("User modifié dans la table Utilisateur");
+        }catch(Exception e){System.out.println("Erreur modification dans la base des user, l'Exception est : " + e.toString());}
+	}
+	
+
+	/**
+	 * MÃ©thode utilisÃ© pour modifier une organisation
+	 * @param id : Id de l'utilisateur
+	 * @param conn
+	 */
+	public static void ModifyOrganisationto_bd(Groupe_Organisation grp,Connection conn)
+	{
+		PreparedStatement pst = null;
+		try{
+            pst = conn.prepareStatement("update organisation set nom_groupe = ? where id_organisation = ?;");
+            pst.setString(1, grp.getNom_groupe());
+            pst.setInt(2, grp.getId_groupe());
+            pst.executeUpdate();
+            System.out.println("Grp modifié dans la table Organisation");
+        }catch(Exception e){System.out.println("Erreur modification dans la base des organisations, l'Exception est : " + e.toString());}
+	}
+	
+	
+
+	/**
+	 * MÃ©thode utilisÃ© pour supprimer un utilisateur quelconque donné
+	 * @param id : Id de l'utilisateur
+	 * @param conn
+	 */
+	public static void DeleteUserto_bd(User u,Connection conn)
+	{
+		PreparedStatement pst = null;
+		try{
+            pst = conn.prepareStatement("delete from utilisateur where id_user = ?;");
+            pst.setInt(1, u.getId());
+            pst.executeUpdate();
+            System.out.println("User supprimé dans la table Utilisateur");
+        }catch(Exception e){System.out.println("Erreur suppression dans la base des user, l'Exception est : " + e.toString());}
+	}
 
 	
+	
+	/**
+	 * MÃ©thode utilisÃ© pour supprimer une organisation donnée
+	 * @param id : Id de l'utilisateur
+	 * @param conn
+	 */
+	public static void DeleteOrganisationto_bd(Groupe_Organisation grp,Connection conn)
+	{
+		PreparedStatement pst = null;
+		try{
+            pst = conn.prepareStatement("delete from organisation where id_organisation = ?;");
+
+            pst.setInt(1, grp.getId_groupe());
+            pst.executeUpdate();
+            System.out.println("Grp supprimé dans la table Organisation");
+        }catch(Exception e){System.out.println("Erreur suppression dans la base des organisations, l'Exception est : " + e.toString());}
+	}
+	
+
+	/**
+	 * MÃ©thode utilisÃ© pour sélectionner tous les utilisateurs
+	 * @param id : Id de l'utilisateur
+	 * @param conn
+	 */
+	public static User[] SelectUsers_bd(Connection conn)
+	{
+		PreparedStatement pst = null;
+		User[] users;
+		int i=0;
+		try{
+            pst = conn.prepareStatement("select * from utilisateur;");
+            ResultSet res = pst.executeQuery();
+            users = new User[res.getFetchSize()];
+            while(res.next()) {
+            	users[res.getRow()] = (User) res.getObject(res.getRow());
+            }
+            
+            System.out.println("Users sélectionnés dans la table Utilisateur");
+            return users;
+        }catch(Exception e){System.out.println("Erreur suppression dans la base des user, l'Exception est : " + e.toString());}
+		return null;
+	}
+	
+	
+	/**
+	 * MÃ©thode utilisÃ© pour sélectionner toutes les organisations
+	 * @param id : Id de l'utilisateur
+	 * @param conn
+	 */
+	public static Groupe_Organisation[] SelectOrganisations_bd(Connection conn)
+	{
+		PreparedStatement pst = null;
+		Groupe_Organisation[] orgs;
+		int i=0;
+		try{
+            pst = conn.prepareStatement("select * from organisation;");
+            ResultSet res = pst.executeQuery();
+            orgs = new Groupe_Organisation[res.getFetchSize()];
+            while(res.next()) {
+            	orgs[res.getRow()] = (Groupe_Organisation) res.getObject(res.getRow());
+            }
+            
+            System.out.println("Organisations sélectionnés dans la table Organisation");
+            return orgs;
+        }catch(Exception e){System.out.println("Erreur suppression dans la base des organisations, l'Exception est : " + e.toString());}
+		return null;
+	}
+	
+	
+		
 
 }
