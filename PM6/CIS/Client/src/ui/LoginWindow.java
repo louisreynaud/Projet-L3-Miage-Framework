@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.EventQueue;
 
-import vues.AcceuilAdmin; 
+import vues.AccueilAdmin; 
 
 public class LoginWindow extends ProcessingWindow implements ActionListener {
 	private static final long serialVersionUID = -4733559679077400789L;
@@ -127,7 +127,7 @@ public class LoginWindow extends ProcessingWindow implements ActionListener {
 	protected void doneBackgoundTask(ChatResult result) {
 		if (result.getCode() == ChatResult.CODE_OK) {
 			Client.getInstance().setMyUsername(usernameField.getText());
-			Application.showWindow(AcceuilAdmin.class);
+			Application.showWindow(AccueilAdmin.class);
 			dispose();
 		} else {
 			MessageBox.showMessageBoxInUIThread(LoginWindow.this, "Login error: " + result.getExtra(), MessageBox.MESSAGE_ERROR);

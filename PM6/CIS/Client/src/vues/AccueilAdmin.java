@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import ui.LoginWindow;
 import ui.Window;
 
-public class AcceuilAdmin extends Window {
+public class AccueilAdmin extends Window {
 
 	private JPanel contentPane;
 
@@ -29,7 +29,7 @@ public class AcceuilAdmin extends Window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AcceuilAdmin frame = new AcceuilAdmin();
+					AccueilAdmin frame = new AccueilAdmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class AcceuilAdmin extends Window {
 	/**
 	 * Create the frame.
 	 */
-	public AcceuilAdmin() {
+	public AccueilAdmin() {
 
 	}
 
