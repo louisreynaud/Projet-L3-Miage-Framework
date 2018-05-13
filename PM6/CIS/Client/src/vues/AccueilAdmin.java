@@ -60,10 +60,10 @@ public class AccueilAdmin extends Window {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblAcceuilAdmin = new JLabel("Acceuil Admin");
-		lblAcceuilAdmin.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAcceuilAdmin.setBounds(195, 11, 175, 14);
-		panel.add(lblAcceuilAdmin);
+		JLabel lblAccueilAdmin = new JLabel("Accueil Admin");
+		lblAccueilAdmin.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAccueilAdmin.setBounds(195, 11, 175, 14);
+		panel.add(lblAccueilAdmin);
 		
 		JButton btnNewButton = new JButton("Employ\u00E9s");
 		btnNewButton.addActionListener(new ActionListener() {
