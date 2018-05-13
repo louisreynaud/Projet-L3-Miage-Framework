@@ -1,0 +1,1 @@
+[{"dispname":"aaa","id":461747598,"passhash":"f7a9e24777ec23212c54d7a350bc5bea5477fdbb","username":"aaa","status":"Salut tout le monde!"}]

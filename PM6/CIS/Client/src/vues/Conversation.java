@@ -90,7 +90,7 @@ public class Conversation extends Window {
 		panel.add(btnRetour);
 		btnRetour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AcceuilAdmin acad = new AcceuilAdmin();
+				AccueilAdmin acad = new AccueilAdmin();
 				acad.setVisible(true);
 				hide();
 				

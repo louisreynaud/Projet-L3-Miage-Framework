@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import ui.LoginWindow;
 import ui.Window;
 
-public class AcceuilAdmin extends Window {
+public class AccueilAdmin extends Window {
 
 	private JPanel contentPane;
 
@@ -29,7 +29,7 @@ public class AcceuilAdmin extends Window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AcceuilAdmin frame = new AcceuilAdmin();
+					AccueilAdmin frame = new AccueilAdmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class AcceuilAdmin extends Window {
 	/**
 	 * Create the frame.
 	 */
-	public AcceuilAdmin() {
+	public AccueilAdmin() {
 
 	}
 
@@ -60,10 +60,10 @@ public class AcceuilAdmin extends Window {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblAcceuilAdmin = new JLabel("Acceuil Admin");
-		lblAcceuilAdmin.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAcceuilAdmin.setBounds(195, 11, 175, 14);
-		panel.add(lblAcceuilAdmin);
+		JLabel lblAccueilAdmin = new JLabel("Accueil Admin");
+		lblAccueilAdmin.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAccueilAdmin.setBounds(195, 11, 175, 14);
+		panel.add(lblAccueilAdmin);
 		
 		JButton btnNewButton = new JButton("Employ\u00E9s");
 		btnNewButton.addActionListener(new ActionListener() {
