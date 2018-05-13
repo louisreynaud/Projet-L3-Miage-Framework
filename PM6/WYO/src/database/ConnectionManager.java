@@ -232,7 +232,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void ModifyUserto_bd(User u,Connection conn)
+	public static void ModifyUserto_db(User u,Connection conn)
 	{
 		PreparedStatement pst = null;
 		try{
@@ -253,7 +253,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void ModifyOrganisationto_bd(Groupe_Organisation grp,Connection conn)
+	public static void ModifyOrganisationto_db(Groupe_Organisation grp,Connection conn)
 	{
 		PreparedStatement pst = null;
 		try{
@@ -272,7 +272,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void DeleteUserto_bd(User u,Connection conn)
+	public static void DeleteUserto_db(User u,Connection conn)
 	{
 		PreparedStatement pst = null;
 		try{
@@ -348,7 +348,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void DeleteOrganisationto_bd(Groupe_Organisation grp,Connection conn)
+	public static void DeleteOrganisationto_db(Groupe_Organisation grp,Connection conn)
 	{
 		PreparedStatement pst = null;
 		try{
@@ -366,7 +366,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static User[] SelectUsers_bd(Connection conn)
+	public static User[] SelectUsers_db(Connection conn)
 	{
 		PreparedStatement pst = null;
 		User[] users;
@@ -382,7 +382,7 @@ public class ConnectionManager {
             System.out.println("Users sélectionnés dans la table Utilisateur");
             return users;
         }catch(Exception e){System.out.println("Erreur suppression dans la base des user, l'Exception est : " + e.toString());}
-		return null;
+		return new User[0];
 	}
 	
 	
@@ -391,7 +391,7 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static Groupe_Organisation[] SelectOrganisations_bd(Connection conn)
+	public static Groupe_Organisation[] SelectOrganisations_db(Connection conn)
 	{
 		PreparedStatement pst = null;
 		Groupe_Organisation[] orgs;
@@ -407,7 +407,7 @@ public class ConnectionManager {
             System.out.println("Organisations sélectionnés dans la table Organisation");
             return orgs;
         }catch(Exception e){System.out.println("Erreur suppression dans la base des organisations, l'Exception est : " + e.toString());}
-		return null;
+		return new Groupe_Organisation[0];
 	}
 	
 	
