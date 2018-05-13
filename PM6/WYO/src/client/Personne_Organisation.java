@@ -8,6 +8,24 @@ package client;
 public class Personne_Organisation extends User {
 	protected int organisation;
 	
+	
+	/**
+	 * Constructeur de la classe.
+	 * @param id
+	 * @param login
+	 * @param password
+	 * @param nom
+	 * @param prenom
+	 * @param org
+	 */
+	public Personne_Organisation(int id, String login, String password, String nom, String prenom,int org) {
+		this.idUser = id;
+		this.loginUser = login;
+		this.passwordUser = password;
+		this.nomUser = nom;
+		this.prenomUser = prenom ;
+		this.organisation = org;
+	}
 	/**
 	 * Constructeur de la classe.
 	 * @param login

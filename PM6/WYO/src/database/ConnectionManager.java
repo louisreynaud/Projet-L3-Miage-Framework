@@ -391,17 +391,16 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static ArrayList<User> SelectUsers_db()
+	public static ArrayList<Personne_Organisation> SelectUsers_db()
 	{
 		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
-		ArrayList<User> users= new ArrayList<User>();
+		ArrayList<Personne_Organisation> users= new ArrayList<Personne_Organisation>();
 		try{
-            pst = conn.prepareStatement("select * from utilisateur;");
+            pst = conn.prepareStatement("select * from utilisateur natural join utilisateur_organisation union select * from utilisateur natural join utilisateur_admin;");
             ResultSet res = pst.executeQuery(); 
             while(res.next()) {
-            	
-            	users.add(new Personne_Publique(res.getString("login"), res.getString("mot_de_passe"), res.getString("nom_user"), res.getString("prenom_user")));		
+            	users.add(new Personne_Organisation(res.getInt(1), res.getString(4), res.getString(5), res.getString(2), res.getString(3), res.getInt(6)));
             }
             conn.close();
             System.out.println("Users sélectionnés dans la table Utilisateur");
@@ -425,7 +424,7 @@ public class ConnectionManager {
             ResultSet res = pst.executeQuery(); 
             while(res.next()) {
             	
-            	grps.add(new Groupe_Organisation(res.getString(1)));		
+            	grps.add(new Groupe_Organisation(res.getInt(1), res.getString(2)));
             }
             conn.close();
             System.out.println("Organisations sélectionnés dans la table Organisation");

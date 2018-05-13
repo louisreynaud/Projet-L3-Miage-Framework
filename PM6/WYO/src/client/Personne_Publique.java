@@ -16,4 +16,14 @@ public class Personne_Publique extends User {
 		setNom(nom);
 		setPrenom(prenom);
 	}
+	/**
+	 * Constructeur de la classe. 
+	 */
+	public Personne_Publique(int id, String login, String password, String nom, String prenom) {
+		setId(id);
+		setLogin(login);
+		setPassword(password);
+		setNom(nom);
+		setPrenom(prenom);
+	}
 }

@@ -42,8 +42,8 @@ public class testConnection {
 		Groupe_Organisation o = new Groupe_Organisation ("Stark's Industries");
 		//ConnectionManager.AddUserPublic_db(pp, conn);
 		
-		ArrayList<User> users = ConnectionManager.SelectUsers_db();
-		System.out.println(users.get(1).getLogin());
+		ArrayList<Personne_Organisation> users = ConnectionManager.SelectUsers_db();
+		System.out.println(users.get(0).getLogin());
 		//ConnectionManager.AddOrganisation_bd(o, conn);
 		/*  try{
             pst = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);

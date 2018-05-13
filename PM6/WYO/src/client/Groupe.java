@@ -17,7 +17,15 @@ public class Groupe {
 	 * @param id
 	 * @param nom
 	 */
+	public Groupe (int id, String nom) {
+		this.id_groupe = id;
+		this.nom_groupe = nom;
+	}
 	
+	/**
+	 * Constructeur de la classe
+	 * @param nom
+	 */
 	public Groupe (String nom){
 		this.nom_groupe = nom;
 	}

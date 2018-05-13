@@ -12,6 +12,15 @@ public class Groupe_Organisation extends Groupe {
 	 * @param nom : organisation
 	 */
 	
+	public Groupe_Organisation(int id, String nom) {
+		super(id, nom);
+	}
+	
+	/**
+	 * Constructeur de la classe. 
+	 * @param nom : organisation
+	 */
+	
 	public Groupe_Organisation( String nom) {
 		super(nom);
 	}

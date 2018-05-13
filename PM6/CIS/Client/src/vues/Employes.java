@@ -12,10 +12,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import client.Groupe_Organisation;
 import client.Personne_Organisation;
+import client.Personne_Publique;
 import client.User;
 import ui.Window;
 
@@ -230,8 +232,13 @@ public class Employes extends Window {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow() != -1) {
-					Connection conn;
-					//ConnectionManager.DeleteUserto_db(u, conn);
+					Personne_Publique u = new Personne_Publique(
+							table.getValueAt(table.getSelectedRow(), 3).toString(),
+							table.getValueAt(table.getSelectedRow(), 4).toString(),
+							table.getValueAt(table.getSelectedRow(), 1).toString(),
+							table.getValueAt(table.getSelectedRow(), 2).toString());
+					u.setId((int) table.getValueAt(table.getSelectedRow(), 0));
+					ConnectionManager.DeleteUserto_db(u);
 					
 				
 				}
@@ -241,20 +248,25 @@ public class Employes extends Window {
 
 		
 		table = new JTable();
+		ArrayList<Personne_Organisation> users = ConnectionManager.SelectUsers_db();
+		Object[][] tableData = new Object[users.size()][6];
+		for (int i=0; i<users.size(); i++) {
+			tableData[i][0] = users.get(i).getId();
+			tableData[i][1] = users.get(i).getNom();
+			tableData[i][2] = users.get(i).getPrenom();
+			tableData[i][3] = users.get(i).getLogin();
+			tableData[i][4] = users.get(i).getPassword();
+			tableData[i][5] = users.get(i).getOrganisation();
+		}
+		
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
+			tableData,
 			new String[] {
-				"Nom", "Pr\u00E9nom", "Adresse Email", "Mot de Passe", "Service"
+				"ID", "Nom", "Pr\u00E9nom", "Adresse Email", "Mot de Passe", "Service"
 			}
 		));
-		table.getColumnModel().getColumn(2).setPreferredWidth(103);
-		table.getColumnModel().getColumn(3).setPreferredWidth(82);
+		table.getColumnModel().getColumn(3).setPreferredWidth(103);
+		table.getColumnModel().getColumn(4).setPreferredWidth(82);
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
 		

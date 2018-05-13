@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import client.Groupe_Organisation;
 import client.Personne_Organisation;
+import client.Personne_Publique;
 import database.ConnectionManager;
 import ui.Window;
 
@@ -108,6 +109,7 @@ public class Services extends Window {
 		});
 		
 		JButton btnNewButton_4 = new JButton("Supprimer");
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -169,6 +171,7 @@ public class Services extends Window {
 				Groupe_Organisation go = new Groupe_Organisation(fieldService.getText());
 				System.out.println(go.getNomGroupe());
 				ConnectionManager.AddOrganisation_db(go);
+				table.repaint();
 			}
 		});
 		btnNewButton_2.setBounds(130, 153, 69, 23);
@@ -180,16 +183,32 @@ public class Services extends Window {
 		
 		table = new JTable();
 		ArrayList<Groupe_Organisation> orgs = ConnectionManager.SelectOrganisations_db();
-		Object[][] tableData = new Object[orgs.size()][1];
+		Object[][] tableData = new Object[orgs.size()][2];
 		for (int i=0; i<orgs.size(); i++) {
-			tableData[i][0] = orgs.get(i).getNomGroupe();
+			tableData[i][0] = orgs.get(i).getIdGroupe();
+			tableData[i][1] = orgs.get(i).getNomGroupe();
 		}
 		table.setModel(new DefaultTableModel(
 			tableData,
 			new String[] {
-				"Nom du Service"
+				"Id du service", "Nom du Service"
 			}
 		));
+		
+		
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(table.getSelectedRow() != -1) {
+					Groupe_Organisation o = new Groupe_Organisation(
+							(int) table.getValueAt(table.getSelectedRow(), 0),
+							table.getValueAt(table.getSelectedRow(), 1).toString()							
+							);					
+					ConnectionManager.DeleteOrganisationto_db(o);
+					
+				
+				}
+			}
+		});
 		
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
