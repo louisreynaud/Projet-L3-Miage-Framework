@@ -54,7 +54,22 @@ public final class AccountManager {
 			}
 		}
 	}
-
+	public boolean getIsAdminInfo(String username) {
+		try {
+			JSONTokener jsonTokener = new JSONTokener(readAllString());
+			JSONArray jsonArray = new JSONArray(jsonTokener);
+			int countOfObject = jsonArray.length();
+			for (int i = 0; i < countOfObject; i++) {
+				JSONObject jsonObject = jsonArray.getJSONObject(i);
+				if (jsonObject.getString("username").equals(username)){
+					return jsonObject.getBoolean("isAdmin");
+				}
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public AccountInfo getAccountInfo(String username,  String passhash) {
 		try {
 			JSONTokener jsonTokener = new JSONTokener(readAllString());
@@ -68,6 +83,7 @@ public final class AccountManager {
 					accountInfo.setAccountId(jsonObject.getInt("id"));
 					accountInfo.setDisplayName(jsonObject.getString("dispname"));
 					accountInfo.setStatus(jsonObject.getString("status"));
+					accountInfo.setIsAdmin(jsonObject.getBoolean("isAdmin"));
 					accountInfo.setState(AccountInfo.STATE_ONLINE);
 					return accountInfo;
 				}
@@ -168,6 +184,7 @@ public final class AccountManager {
 			jsonObject.put("username", username);
 			jsonObject.put("passhash", passhash);
 			jsonObject.put("dispname", dispname);
+			jsonObject.put("isAdmin", false);
 			jsonObject.put("status", INIT_STATUS);
 
 			jsonArray.put(jsonObject);

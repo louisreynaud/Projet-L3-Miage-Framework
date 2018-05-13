@@ -194,6 +194,7 @@ public class ConnectionManager {
 		try{
             pst = conn.prepareStatement("insert into Utilisateur_Organisation (id_user,id_organisation) values ( ? , ? );");
             pst.setInt(1, id);
+            pst.setInt(2, org);
             pst.executeUpdate();
             System.out.println("User ajouté dans la table Utilisateur Organisation ");
         }catch(Exception e){System.out.println("Erreur d'ajout dans la base des user Org, l'Exception est : " + e.toString());}

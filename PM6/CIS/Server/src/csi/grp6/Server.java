@@ -220,9 +220,16 @@ public final class Server implements Closeable, OnAuthenticatedListener{
 					result.setExtra("Deja conx");
 					Log.i("Deja conx");
 				} else {
-					result.setCode(ChatResult.CODE_OK);
+					if(accountInfo.getIsAdmin()) {
+						result.setCode(ChatResult.CODE_ADMIN);
+						Log.i("Response login: ADMIN");
+					}
+					else {
+						result.setCode(ChatResult.CODE_OK);
+						Log.i("Response login: OK");
+					}
 					sender.setAccount(accountInfo);
-					Log.i("Response login: OK");
+					
 				}
 			} else {
 				result.setExtra("Wrong username or password!");

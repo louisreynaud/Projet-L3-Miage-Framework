@@ -11,19 +11,26 @@ import bean.ChatResult;
 import bo.ResourceManager;
 import csi.grp6.Application;
 import csi.grp6.Client;
+import database.ConnectionManager;
 import utils.Security;
 import view.FitImageJLabel;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.EventQueue;
-
-import vues.AccueilAdmin; 
+import vues.AccueilAdmin;
+import vues.AccueilEmploye;
+import vues.Conversation; 
 
 public class LoginWindow extends ProcessingWindow implements ActionListener {
+    private static Statement stm;
+    private static ResultSet rs;
 	private static final long serialVersionUID = -4733559679077400789L;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
@@ -117,6 +124,16 @@ public class LoginWindow extends ProcessingWindow implements ActionListener {
 				account.setUsername(username);
 				ChatRequest request = new ChatRequest(ChatRequest.CODE_LOGIN, account);
 				doInBackground(request, "Authenticating...");
+				/* String login = LoginAdmin();
+				String mdp = MdpAdmin();
+				if (username.equals(login) &&  password.equals(mdp)) {
+					AccueilAdmin conv= new AccueilAdmin();
+					conv.setVisible(true);
+					hide();
+				}else {
+					JOptionPane.showMessageDialog(LoginWindow.this, "Personne organisation!");
+				}*/
+				
 			} else {
 				JOptionPane.showMessageDialog(LoginWindow.this, "Re-enter username and password!");
 			}
@@ -125,13 +142,67 @@ public class LoginWindow extends ProcessingWindow implements ActionListener {
 
 	@Override
 	protected void doneBackgoundTask(ChatResult result) {
-		if (result.getCode() == ChatResult.CODE_OK) {
+		if (result.getCode() == ChatResult.CODE_ADMIN) {
 			Client.getInstance().setMyUsername(usernameField.getText());
+			Client c = Client.getInstance();
 			Application.showWindow(AccueilAdmin.class);
 			dispose();
-		} else {
+		}
+		else if (result.getCode() == ChatResult.CODE_OK) {
+			Client.getInstance().setMyUsername(usernameField.getText());
+			Client c = Client.getInstance();
+			Application.showWindow(AccueilEmploye.class);
+			dispose();
+		} 
+		else {
 			MessageBox.showMessageBoxInUIThread(LoginWindow.this, "Login error: " + result.getExtra(), MessageBox.MESSAGE_ERROR);
 			setVisible(true);
 		}
+	}
+	
+	public static String LoginAdmin() {
+		
+        PreparedStatement pst =null;
+        String login=null;
+        String sql="select * from Utilisateur where id_user IN (select id_user from Utilisateur_Admin ) ";        
+        try
+        {
+           
+            ResultSet rs = null;
+            rs = ConnectionManager.executeSelect(sql);
+            
+            while(rs.next())
+            {
+                login= rs.getString("login");
+            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return login;
+	}
+	public static String MdpAdmin() {
+		
+        PreparedStatement pst =null;
+        String mot_de_passe=null;
+        String sql="select * from Utilisateur where id_user IN (select id_user from Utilisateur_Admin ) ";        
+        try
+        {
+           
+            ResultSet rs = null;
+            rs = ConnectionManager.executeSelect(sql);
+     
+            while(rs.next())
+            {
+                mot_de_passe=rs.getString("mot_de_passe");
+                System.out.println(mot_de_passe);
+            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return mot_de_passe;
 	}
 }

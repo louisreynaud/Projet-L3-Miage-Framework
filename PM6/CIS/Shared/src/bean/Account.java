@@ -7,6 +7,7 @@ public class Account implements Serializable {
 	private int id;
 	private String username;
 	private String password;
+	private boolean isAdmin;
 
 	public String getUsername() {
 		return username;
@@ -30,5 +31,13 @@ public class Account implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 }

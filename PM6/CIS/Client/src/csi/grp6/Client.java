@@ -136,6 +136,10 @@ public final class Client {
 	public void setMyUsername(String myUsername) {
 		myAccount.setUsername(myUsername);
 	}
+	
+	public void setIsAdmin(boolean isAdmin) {
+		myAccount.setIsAdmin(isAdmin);
+	}
 
 	public interface OnDataReceivedListener {
 		boolean onDataReceived(Client sender, @NotNull ChatResult receivedObject);

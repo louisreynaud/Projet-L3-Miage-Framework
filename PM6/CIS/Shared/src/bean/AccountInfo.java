@@ -10,6 +10,7 @@ public class AccountInfo implements Serializable {
 	private String displayName;
 	private String status;
 	private int state;
+	private boolean isAdmin;
 
 	public int getAccountId() {
 		return accountId;
@@ -19,6 +20,14 @@ public class AccountInfo implements Serializable {
 		this.accountId = accountId;
 	}
 
+	public boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+	
 	public String getDisplayName() {
 		return displayName;
 	}
