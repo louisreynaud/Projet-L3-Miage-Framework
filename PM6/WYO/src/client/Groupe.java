@@ -12,16 +12,14 @@ public class Groupe {
 	protected ArrayList<User> list_user;	// liste des utilisateurs membres du groupe.
 	protected int id_groupe;
 	protected String nom_groupe;
-	protected User createur;
 	/**
 	 * Constructeur de la classe
 	 * @param id
 	 * @param nom
-	 * @param login_createur
 	 */
-	public Groupe (String nom, User createur){
+	
+	public Groupe (String nom){
 		this.nom_groupe = nom;
-		this.createur = createur;
 	}
 	
 	/**
@@ -42,7 +40,5 @@ public class Groupe {
 	
 	public int getIdGroupe() {return this.id_groupe;}
 	public String getNomGroupe() {return this.nom_groupe;}
-	public User getCreateur() {return this.createur;}
 	public void setNomGroupe(String n) {this.nom_groupe = n;}
-	public void setCreateurGroupe(User u) {this.createur = u;}
 }

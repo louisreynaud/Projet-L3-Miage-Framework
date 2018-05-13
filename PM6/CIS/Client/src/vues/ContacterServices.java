@@ -22,6 +22,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ContacterServices extends Window {
@@ -115,10 +116,10 @@ public class ContacterServices extends Window {
 		
 		table = new JTable();
 		Connection conn = null;
-		Groupe_Organisation[] orgs = ConnectionManager.SelectOrganisations_db(conn);
-		Object[][] tableData = new Object[orgs.length][2];
-		for (int i=0; i<orgs.length; i++) {
-			tableData[i][0] = orgs[i].getNomGroupe();
+		ArrayList<Groupe_Organisation> orgs = ConnectionManager.SelectOrganisations_db();
+		Object[][] tableData = new Object[orgs.size()][2];
+		for (int i=0; i<orgs.size(); i++) {
+			tableData[i][0] = orgs.get(i).getNomGroupe();
 		}
 		
 		table.setModel(new DefaultTableModel(

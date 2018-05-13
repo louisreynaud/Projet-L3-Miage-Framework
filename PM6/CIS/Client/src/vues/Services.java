@@ -27,6 +27,7 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
@@ -38,6 +39,7 @@ public class Services extends Window {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	Connection conn =null;
 
 	/**
 	 * Launch the application.
@@ -70,6 +72,8 @@ public class Services extends Window {
 		lblGestionDesEmploys.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		
 		
 		JButton btnRetour = new JButton("Retour");
 		btnRetour.addActionListener(new ActionListener() {
@@ -162,10 +166,9 @@ public class Services extends Window {
 		JButton btnNewButton_2 = new JButton("Ajouter");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Connection conn = null;
-				Groupe_Organisation go = new Groupe_Organisation(fieldService.getText(), null);
+				Groupe_Organisation go = new Groupe_Organisation(fieldService.getText());
 				System.out.println(go.getNomGroupe());
-				ConnectionManager.AddOrganisation_db(go, conn);
+				ConnectionManager.AddOrganisation_db(go);
 			}
 		});
 		btnNewButton_2.setBounds(130, 153, 69, 23);
@@ -176,11 +179,10 @@ public class Services extends Window {
 		panel.add(btnNewButton_3);
 		
 		table = new JTable();
-		Connection conn = null;
-		Groupe_Organisation[] orgs = ConnectionManager.SelectOrganisations_db(conn);
-		Object[][] tableData = new Object[orgs.length][1];
-		for (int i=0; i<orgs.length; i++) {
-			tableData[i][0] = orgs[i].getNomGroupe();
+		ArrayList<Groupe_Organisation> orgs = ConnectionManager.SelectOrganisations_db();
+		Object[][] tableData = new Object[orgs.size()][1];
+		for (int i=0; i<orgs.size(); i++) {
+			tableData[i][0] = orgs.get(i).getNomGroupe();
 		}
 		table.setModel(new DefaultTableModel(
 			tableData,

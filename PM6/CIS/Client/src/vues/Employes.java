@@ -27,6 +27,7 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 import database.ConnectionManager;
@@ -73,6 +74,7 @@ public class Employes extends Window {
 		lblGestionDesEmploys.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		JScrollPane scrollPane = new JScrollPane();
+		Connection conn = ConnectionManager.DbConnector();
 		
 		JButton btnRetour = new JButton("Retour");
 		btnRetour.addActionListener(new ActionListener() {
@@ -199,20 +201,20 @@ public class Employes extends Window {
 		listeServices.setBounds(113, 119, 86, 20);
 		panel.add(listeServices);
 
-		Connection conn = null;
-		Groupe_Organisation[] orgs = ConnectionManager.SelectOrganisations_db(conn);
-		for (int i=0; i<orgs.length; i++) {
-			listeServices.addItem(orgs[i].getIdGroupe());
+
+		ArrayList<Groupe_Organisation> orgs = ConnectionManager.SelectOrganisations_db();
+		for (int i=0; i<orgs.size(); i++) {
+			listeServices.addItem(orgs.get(i).getIdGroupe());
 		}
-		
+
 		
 		JButton btnNewButton_2 = new JButton("Ajouter");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(fieldEmail.getText() != null && fieldPassword.getText() != null && fieldNom.getText() != null && fieldPrenom.getText() != null && listeServices.getSelectedItem() != null) {
-					Connection conn = null;
+
 					Personne_Organisation po = new Personne_Organisation(fieldEmail.getText(), fieldPassword.getText(), fieldNom.getText(), fieldPrenom.getText(), (int) listeServices.getSelectedItem());
-					ConnectionManager.AddUserOrganisation_db(po, conn);
+					ConnectionManager.AddUserOrganisation_db(po);
 			
 				}
 			}

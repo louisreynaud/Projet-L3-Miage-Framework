@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.ArrayList;
 
 import client.Evenement;
 import client.Groupe;
@@ -45,8 +45,8 @@ public class ConnectionManager {
 	 * @param msg  de type Message
 	 * @param conn de type Connection
 	 */
-	public static void AddMsg_db(Message msg,Connection conn) {
-		conn = ConnectionManager.DbConnector();
+	public static void AddMsg_db(Message msg) {
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		String query="insert into Message (lib_msg,corps_msg,date_envoi,id_user) values (? , ? , ? , ?);";
 	    try{
@@ -66,8 +66,8 @@ public class ConnectionManager {
 	 * @param conn
 	 */
 	
-	public static void AddTchat_db(Tchat tchat,Connection conn) {
-		conn = ConnectionManager.DbConnector();
+	public static void AddTchat_db(Tchat tchat) {
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 	    String query="insert into Tchat (id_user1, id_user2) values (? , ?);";
 	    try{
@@ -86,8 +86,8 @@ public class ConnectionManager {
 	 * @param msg
 	 * @param conn
 	 */
-	public static void AddEchangeTchat_db(Tchat tchat,Message msg, Connection conn){
-		conn = ConnectionManager.DbConnector();
+	public static void AddEchangeTchat_db(Tchat tchat,Message msg){
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 	    String query="insert into EchangeTchat (id_tchat, id_msg) values (? , ?);";
 	    try{
@@ -106,7 +106,8 @@ public class ConnectionManager {
 	 * @param pp de type Personne_Publique
 	 * @param conn
 	 */
-	public static void AddUserPublic_db(Personne_Publique pp, Connection conn) {
+	public static void AddUserPublic_db(Personne_Publique pp) {
+		Connection conn = ConnectionManager.DbConnector();
 		conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		ResultSet rs;
@@ -122,7 +123,7 @@ public class ConnectionManager {
             rs = pst.getGeneratedKeys();
             if(rs.next()) {
             	id = rs.getInt(1);
-            	AddUserPublicto_db(id, conn);
+            	AddUserPublicto_db(id);
             }else {System.out.println("out of boundries!!!!");}
             rs.close();
             pst.close();
@@ -136,13 +137,15 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	private static void AddUserPublicto_db(int id,Connection conn)
+	private static void AddUserPublicto_db(int id)
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("insert into Utilisateur_Publique (id_user) values (?);");
             pst.setInt(1, id);
             pst.executeUpdate();
+            conn.close();
             System.out.println("User ajout√© dans la table Utilisateur_Publique");
         }catch(Exception e){System.out.println("Erreur d'ajout dans la base des user pub, l'Exception est : " + e.toString());}
 	}
@@ -151,7 +154,8 @@ public class ConnectionManager {
 	 * @param po de type Personne_Organisation
 	 * @param conn
 	 */
-	public static void AddUserOrganisation_db(Personne_Organisation po, Connection conn) {
+	public static void AddUserOrganisation_db(Personne_Organisation po) {
+		Connection conn = ConnectionManager.DbConnector();
 		conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		ResultSet rs;
@@ -167,7 +171,7 @@ public class ConnectionManager {
             rs = pst.getGeneratedKeys();
             if(rs.next()) {
             	id = rs.getInt(1);
-            	AddUserOrgto_db(id, po.getOrganisation(),conn);
+            	AddUserOrgto_db(id, po.getOrganisation());
             }else {System.out.println("out of boundries!!!!");}
             rs.close();
             pst.close();
@@ -181,8 +185,9 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	private static void AddUserOrgto_db(int id, int org , Connection conn)
+	private static void AddUserOrgto_db(int id, int org)
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("insert into Utilisateur_Organisation (id_user,id_organisation) values ( ? , ? );");
@@ -191,7 +196,8 @@ public class ConnectionManager {
             System.out.println("User ajout√© dans la table Utilisateur Organisation ");
         }catch(Exception e){System.out.println("Erreur d'ajout dans la base des user Org, l'Exception est : " + e.toString());}
 	}
-	public static void AddUserAdmin_db(Personne_Admin pa, Connection conn) {
+	public static void AddUserAdmin_db(Personne_Admin pa) {
+		Connection conn = ConnectionManager.DbConnector();
 		conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		ResultSet rs;
@@ -207,7 +213,7 @@ public class ConnectionManager {
             rs = pst.getGeneratedKeys();
             if(rs.next()) {
             	id = rs.getInt(1);
-            	AddUserAdminto_db(id, pa.getOrganisation(),conn);
+            	AddUserAdminto_db(id, pa.getOrganisation());
             }else {System.out.println("out of boundries!!!!");}
             rs.close();
             pst.close();
@@ -221,13 +227,15 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	private static void AddUserAdminto_db(int id, int org , Connection conn)
+	private static void AddUserAdminto_db(int id, int org)
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("insert into Utilisateur_Admin (id_user,id_organisation) values ( ? , ? );");
             pst.setInt(1, id);
             pst.executeUpdate();
+            conn.close();
             System.out.println("User ajout√© dans la table Utilisateur Admin ");
         }catch(Exception e){System.out.println("Erreur d'ajout dans la base des user Admin, l'Exception est : " + e.toString());}
 	}
@@ -237,8 +245,9 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void ModifyUserto_db(User u,Connection conn)
+	public static void ModifyUserto_db(User u)
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("update utilisateur set nom_user = ?, prenom_user = ?, login = ?, mot_de_passe = ? where id_user = ?;");
@@ -248,6 +257,7 @@ public class ConnectionManager {
             pst.setString(4, u.getPassword());
             pst.setInt(5, u.getId());
             pst.executeUpdate();
+            conn.close();
             System.out.println("User modifiÈ dans la table Utilisateur");
         }catch(Exception e){System.out.println("Erreur modification dans la base des user, l'Exception est : " + e.toString());}
 	}
@@ -258,14 +268,16 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void ModifyOrganisationto_db(Groupe_Organisation grp,Connection conn)
+	public static void ModifyOrganisationto_db(Groupe_Organisation grp)
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("update organisation set nom_groupe = ? where id_organisation = ?;");
             pst.setString(1, grp.getNomGroupe());
             pst.setInt(2, grp.getIdGroupe());
             pst.executeUpdate();
+            conn.close();
             System.out.println("Grp modifiÈ dans la table Organisation");
         }catch(Exception e){System.out.println("Erreur modification dans la base des organisations, l'Exception est : " + e.toString());}
 	}
@@ -277,13 +289,15 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void DeleteUserto_db(User u,Connection conn)
+	public static void DeleteUserto_db(User u)
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("delete from utilisateur where id_user = ?;");
             pst.setInt(1, u.getId());
             pst.executeUpdate();
+            conn.close();
             System.out.println("User supprimÈ dans la table Utilisateur");
         }catch(Exception e){System.out.println("Erreur suppression dans la base des user, l'Exception est : " + e.toString());}
 	}
@@ -293,12 +307,14 @@ public class ConnectionManager {
 	 * @param org :  organisation
 	 * @param conn : connection
 	 */
-	public static void AddOrganisation_db(Groupe_Organisation org, Connection conn){
+	public static void AddOrganisation_db(Groupe_Organisation org){
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try {
 			pst = conn.prepareStatement("insert into Organisation (nom_organisation) values( ? );");
 			pst.setString(1, org.getNomGroupe());
 			pst.executeUpdate();
+            conn.close();
 			System.out.println("Organisation ajout√© ");
 		} catch (SQLException e) {
 			System.out.println("oups une exception!!");
@@ -312,13 +328,14 @@ public class ConnectionManager {
 	 * @param conn : connection
 	 */
 	
-	public static void AddGroupe_db(Groupe grp, Connection conn){
+	public static void AddGroupe_db(Groupe grp){
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try {
 			pst = conn.prepareStatement("insert into Groupe (nom_groupe, id_user) values (? , ?);");
 			pst.setString(1, grp.getNomGroupe());
-			pst.setInt(2, grp.getCreateur().getId());
 			pst.executeUpdate();
+            conn.close();
 			System.out.println("Organisation ajout√© ");
 		} catch (SQLException e) {
 			System.out.println("oups une exception!!");
@@ -332,13 +349,15 @@ public class ConnectionManager {
 	 * @param grp groupe
 	 * @param conn Connection
 	 */
-	public static void AddMembreGroupe_db(User u , Groupe grp, Connection conn) {
+	public static void AddMembreGroupe_db(User u , Groupe grp) {
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try {
 			pst = conn.prepareStatement("insert into MembreGroupe (id_groupe, id_user) values (? , ?);");
 			pst.setInt(1, grp.getIdGroupe());
 			pst.setInt(2, u.getId());
 			pst.executeUpdate();
+            conn.close();
 			System.out.println("Membre ajout√©");
 		} catch (SQLException e) {
 			System.out.println("oups une exception!!");
@@ -352,14 +371,16 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static void DeleteOrganisationto_db(Groupe_Organisation grp,Connection conn)
+	public static void DeleteOrganisationto_db(Groupe_Organisation grp)
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try{
             pst = conn.prepareStatement("delete from organisation where id_organisation = ?;");
 
             pst.setInt(1, grp.getIdGroupe());
             pst.executeUpdate();
+            conn.close();
             System.out.println("Grp supprimÈ dans la table Organisation");
         }catch(Exception e){System.out.println("Erreur suppression dans la base des organisations, l'Exception est : " + e.toString());}
 	}
@@ -370,23 +391,22 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static User[] SelectUsers_db(Connection conn)
+	public static ArrayList<User> SelectUsers_db()
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
-		User[] users;
-		int i=0;
+		ArrayList<User> users= new ArrayList<User>();
 		try{
             pst = conn.prepareStatement("select * from utilisateur;");
-            ResultSet res = pst.executeQuery();
-            users = new User[res.getFetchSize()];
+            ResultSet res = pst.executeQuery(); 
             while(res.next()) {
-            	users[res.getRow()] = (User) res.getObject(res.getRow());
+            	
+            	users.add(new Personne_Publique(res.getString("login"), res.getString("mot_de_passe"), res.getString("nom_user"), res.getString("prenom_user")));		
             }
-            
+            conn.close();
             System.out.println("Users sÈlectionnÈs dans la table Utilisateur");
-            return users;
-        }catch(Exception e){System.out.println("Erreur suppression dans la base des user, l'Exception est : " + e.toString());}
-		return new User[0];
+        }catch(Exception e){System.out.println("Erreur selection dans la base des user, l'Exception est : " + e.toString());}
+		return users;
 	}
 	
 	
@@ -395,23 +415,23 @@ public class ConnectionManager {
 	 * @param id : Id de l'utilisateur
 	 * @param conn
 	 */
-	public static Groupe_Organisation[] SelectOrganisations_db(Connection conn)
+	public static ArrayList<Groupe_Organisation> SelectOrganisations_db()
 	{
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
-		Groupe_Organisation[] orgs;
-		int i=0;
+		ArrayList<Groupe_Organisation> grps= new ArrayList<Groupe_Organisation>();
 		try{
             pst = conn.prepareStatement("select * from organisation;");
-            ResultSet res = pst.executeQuery();
-            orgs = new Groupe_Organisation[res.getFetchSize()];
+            ResultSet res = pst.executeQuery(); 
             while(res.next()) {
-            	orgs[res.getRow()] = (Groupe_Organisation) res.getObject(res.getRow());
+            	
+            	grps.add(new Groupe_Organisation(res.getString(1)));		
             }
-            
+            conn.close();
             System.out.println("Organisations sÈlectionnÈs dans la table Organisation");
-            return orgs;
-        }catch(Exception e){System.out.println("Erreur suppression dans la base des organisations, l'Exception est : " + e.toString());}
-		return new Groupe_Organisation[0];
+        }catch(Exception e){System.out.println("Erreur selection dans la base des organisation, l'Exception est : " + e.toString());}
+        
+		return grps;
 	}
 	
 	
@@ -423,13 +443,15 @@ public class ConnectionManager {
 	 * @param t topic
 	 * @param conn Connection
 	 */
-	public static void AddTopic_db(Topic t, Connection conn) {
+	public static void AddTopic_db(Topic t) {
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try {
 			pst = conn.prepareStatement("insert into Topic (sujet_topic, id_user) values ( ? , ?);");
 			pst.setString(1, t.getTitrePublication());
 			pst.setInt(2, t.getAuteur().getId());
 			pst.executeUpdate();
+            conn.close();
 			System.out.println("Topic ajout√©");
 		} catch (SQLException e) {
 			System.out.println("oups une exception!!");
@@ -444,13 +466,15 @@ public class ConnectionManager {
 	 * @param m msg
 	 * @param conn Connection
 	 */
-	public static void AddEvenement_db(Evenement event, Connection conn) {
+	public static void AddEvenement_db(Evenement event) {
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try {
 			pst = conn.prepareStatement("insert into Evenement (nom_event , description_event) values ( ? , ?);");
 			pst.setString(1, event.getTitrePublication());
 			pst.setString(2, event.getDescriptionPublication());
 			pst.executeUpdate();
+            conn.close();
 			System.out.println("Echange Evenement ajout√©");
 		} catch (SQLException e) {
 			System.out.println("oups une exception!!");
@@ -463,13 +487,15 @@ public class ConnectionManager {
 	 * @param m msg
 	 * @param conn Connection
 	 */
-	public static void AddEchangeTopic_db(Topic t, Message msg ,Connection conn) {
+	public static void AddEchangeTopic_db(Topic t, Message msg) {
+		Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try {
 			pst = conn.prepareStatement("insert into EchangeTopic (id_topic, id_msg) values ( ? , ?);");
 			pst.setInt(1, t.getIdPublication());
 			pst.setInt(2, msg.getIdMessage());
 			pst.executeUpdate();
+            conn.close();
 			System.out.println("Echange Topic ajout√©");
 		} catch (SQLException e) {
 			System.out.println("oups une exception!!");
@@ -482,7 +508,8 @@ public class ConnectionManager {
 	 * @param msg : Message
 	 * @param conn : Connection
 	 */
-	public static void AddParticipationEvent_db(Evenement event, User user ,Connection conn) {
+	public static void AddParticipationEvent_db(Evenement event, User user) {
+        Connection conn = ConnectionManager.DbConnector();
 		PreparedStatement pst = null;
 		try {
 			pst = conn.prepareStatement("insert into ParticipationEvent (id_event, id_user , participe) values (?, ? , ?);");
@@ -490,6 +517,7 @@ public class ConnectionManager {
 			pst.setInt(2, user.getId());
 			pst.setInt(3, event.getParticipe());
 			pst.executeUpdate();
+            conn.close();
 			System.out.println("Participation event ajout√©");
 		} catch (SQLException e) {
 			System.out.println("oups une exception!!");
