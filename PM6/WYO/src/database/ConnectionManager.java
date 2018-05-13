@@ -33,7 +33,7 @@ public class ConnectionManager {
     {   
         try{
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/lenovo/git/Projet-L3-Miage-Framework/PM6/WYO/cisdatabase.sqlite3");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:cisdatabase.sqlite3");
             return conn;   
             }catch(Exception e){
                 System.out.println(e);
