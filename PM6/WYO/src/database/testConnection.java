@@ -31,7 +31,7 @@ public class testConnection {
 		System.out.println(conn.toString());}
 		Date d = new Date(5, 9, 2010);
 		Personne_Admin u1 = new Personne_Admin("fafafafafaf", "123456", "daef","nass",1);
-		Personne_Publique pp = new Personne_Publique("awawawa", "123456", "bourret","aurelien");
+		Personne_Publique pp = new Personne_Publique("oihouh", "123456", "bourret","aurelien");
 		//Tchat t = new Tchat(u1,u2);
 		//Message msg = new Message("test","hello poto",d,u1);
 		PreparedStatement pst = null;
@@ -39,6 +39,7 @@ public class testConnection {
 		int id_user = 0;
 		//ConnectionManager.AddUserAdmin_bd(u1, conn);
 		Groupe_Organisation o = new Groupe_Organisation ("Stark's Industries",u1);
+		ConnectionManager.AddUserPublic_db(pp, conn);
 		//ConnectionManager.AddOrganisation_bd(o, conn);
 		/*  try{
             pst = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
