@@ -296,9 +296,8 @@ public class ConnectionManager {
 	public static void AddOrganisation_db(Groupe_Organisation org, Connection conn){
 		PreparedStatement pst = null;
 		try {
-			pst = conn.prepareStatement("insert into Organisation (nom_organisation, id_user) values (? , ?);");
+			pst = conn.prepareStatement("insert into Organisation (nom_organisation) values( ? );");
 			pst.setString(1, org.getNomGroupe());
-			pst.setInt(2, org.getCreateur().getId());
 			pst.executeUpdate();
 			System.out.println("Organisation ajouté ");
 		} catch (SQLException e) {
@@ -414,6 +413,7 @@ public class ConnectionManager {
         }catch(Exception e){System.out.println("Erreur suppression dans la base des organisations, l'Exception est : " + e.toString());}
 		return new Groupe_Organisation[0];
 	}
+	
 	
 	
 		

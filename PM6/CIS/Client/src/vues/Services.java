@@ -154,11 +154,6 @@ public class Services extends Window {
 		lblNewLabel.setBounds(10, 53, 80, 14);
 		panel.add(lblNewLabel);
 		
-	
-		JLabel lblNewLabel_4 = new JLabel("Adress Email Employé");
-		lblNewLabel_4.setBounds(10, 101, 111, 14);
-		panel.add(lblNewLabel_4);
-		
 		fieldService = new JTextField();
 		fieldService.setBounds(142, 50, 117, 20);
 		panel.add(fieldService);
@@ -168,8 +163,9 @@ public class Services extends Window {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Connection conn = null;
-				
-				ConnectionManager.AddOrganisation_db(new Groupe_Organisation(null, null), conn);
+				Groupe_Organisation go = new Groupe_Organisation(fieldService.getText(), null);
+				System.out.println(go.getNomGroupe());
+				ConnectionManager.AddOrganisation_db(go, conn);
 			}
 		});
 		btnNewButton_2.setBounds(130, 153, 69, 23);
@@ -179,21 +175,17 @@ public class Services extends Window {
 		btnNewButton_3.setBounds(207, 153, 80, 23);
 		panel.add(btnNewButton_3);
 		
-		JComboBox listemploye = new JComboBox();
-		listemploye.setBounds(142, 98, 117, 17);
-		panel.add(listemploye);
-		
 		table = new JTable();
 		Connection conn = null;
 		Groupe_Organisation[] orgs = ConnectionManager.SelectOrganisations_db(conn);
-		Object[][] tableData = new Object[orgs.length][2];
+		Object[][] tableData = new Object[orgs.length][1];
 		for (int i=0; i<orgs.length; i++) {
 			tableData[i][0] = orgs[i].getNomGroupe();
 		}
 		table.setModel(new DefaultTableModel(
 			tableData,
 			new String[] {
-				"Nom du Service",  "Adress Email Employé"
+				"Nom du Service"
 			}
 		));
 		
