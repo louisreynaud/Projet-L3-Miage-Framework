@@ -78,6 +78,10 @@ public class ContacterServices extends Window {
 		});
 		
 		JButton btnContacterEmp = new JButton("Contacter Employ\u00E9");
+		btnContacterEmp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		JButton btnContacter = new JButton("Contacter");
 		GroupLayout gl_panel = new GroupLayout(panel);

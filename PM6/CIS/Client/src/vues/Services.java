@@ -171,7 +171,7 @@ public class Services extends Window {
 				Groupe_Organisation go = new Groupe_Organisation(fieldService.getText());
 				System.out.println(go.getNomGroupe());
 				ConnectionManager.AddOrganisation_db(go);
-				table.repaint();
+				
 			}
 		});
 		btnNewButton_2.setBounds(130, 153, 69, 23);

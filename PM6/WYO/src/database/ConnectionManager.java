@@ -25,6 +25,8 @@ import client.User;
  *
  */
 public class ConnectionManager {
+    private static Statement stm;
+    private static ResultSet rs;
 	/**
 	 * Méthode permet la connexion à la base de données
 	 * @return Connection
@@ -532,4 +534,42 @@ public class ConnectionManager {
 		return pp;
 		
 	}*/
+	public static ResultSet executeSelect(String sql){
+		 
+	      Connection conn=null;
+	      conn = ConnectionManager.DbConnector();
+	      try{
+	      stm = conn.createStatement();
+	      rs = stm.executeQuery(sql);
+	      
+	      }
+	      catch(Exception ex){
+	         ex.printStackTrace();
+	      }
+	      return rs;
+	    }
+	    
+public static String LoginAdmin() {
+		
+        PreparedStatement pst =null;
+        String login=null;
+        String sql="select * from Utilisateur where id_user IN (select id_user from Utilisateur_Admin ) ";        
+        try
+        {
+           
+            ResultSet rs = null;
+            rs = ConnectionManager.executeSelect(sql);
+            
+            while(rs.next())
+            {
+                login= rs.getString("login");
+                System.out.println("login : " + login);
+            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return login;
+	}
 }

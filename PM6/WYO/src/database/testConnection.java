@@ -30,7 +30,10 @@ public class testConnection {
 		else
 		{System.out.println("the link is good :D ");
 		System.out.println(conn.toString());}
-		Date d = new Date(5, 9, 2010);
+		
+		String s = ConnectionManager.LoginAdmin();
+		System.out.println(s);
+	/*	Date d = new Date(5, 9, 2010);
 		Personne_Admin u1 = new Personne_Admin("fafafafafaf", "123456", "daef","nass",1);
 		Personne_Publique pp = new Personne_Publique("oihouh", "123456", "bourret","aurelien");
 		//Tchat t = new Tchat(u1,u2);
@@ -40,10 +43,10 @@ public class testConnection {
 		int id_user = 0;
 		//ConnectionManager.AddUserAdmin_bd(u1, conn);
 		Groupe_Organisation o = new Groupe_Organisation ("Stark's Industries");
-		//ConnectionManager.AddUserPublic_db(pp, conn);
+		//ConnectionManager.AddUserPublic_db(pp, conn);*/
 		
-		ArrayList<Personne_Organisation> users = ConnectionManager.SelectUsers_db();
-		System.out.println(users.get(0).getLogin());
+		//ArrayList<Personne_Organisation> users = ConnectionManager.SelectUsers_db();
+		//System.out.println(users.get(0).getLogin());
 		//ConnectionManager.AddOrganisation_bd(o, conn);
 		/*  try{
             pst = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
