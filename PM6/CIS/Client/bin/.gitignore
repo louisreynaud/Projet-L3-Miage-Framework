@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /avatar.png
 /button-send.png
 /connection-banner.PNG
@@ -10,3 +11,7 @@
 /profile.png
 /ui/
 /vues/
+=======
+/vues/
+/csi/
+>>>>>>> branch 'master' of https://github.com/louisreynaud/Projet-L3-Miage-Framework.git

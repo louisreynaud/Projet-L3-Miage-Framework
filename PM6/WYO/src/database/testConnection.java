@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import client.Message;
 import client.Personne_Admin;
@@ -38,8 +39,11 @@ public class testConnection {
 		String query="insert into Utilisateur (nom_user, prenom_user, login, mot_de_passe) values (?, ? , ? , ? , ?);";
 		int id_user = 0;
 		//ConnectionManager.AddUserAdmin_bd(u1, conn);
-		Groupe_Organisation o = new Groupe_Organisation ("Stark's Industries",u1);
-		ConnectionManager.AddUserPublic_db(pp, conn);
+		Groupe_Organisation o = new Groupe_Organisation ("Stark's Industries");
+		//ConnectionManager.AddUserPublic_db(pp, conn);
+		
+		ArrayList<User> users = ConnectionManager.SelectUsers_db();
+		System.out.println(users.get(1).getLogin());
 		//ConnectionManager.AddOrganisation_bd(o, conn);
 		/*  try{
             pst = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
