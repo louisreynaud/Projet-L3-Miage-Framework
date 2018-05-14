@@ -107,7 +107,7 @@ public class Homechat extends JFrame implements ActionListener {
 		btnShowIPs.addActionListener(this);
 		panel.add(btnShowIPs);
 
-		JLabel Copyright = new JLabel("Copyright by Nabil");
+		JLabel Copyright = new JLabel("Copyright by GRP6");
 		Copyright.setHorizontalAlignment(SwingConstants.RIGHT);
 		Copyright.setForeground(Color.GRAY);
 		Copyright.setBounds(328, 321, 185, 14);

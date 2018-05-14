@@ -65,7 +65,7 @@ public class ConnectionWindow extends Window implements ActionListener {
 		bannerField.setIcon(new ImageIcon(ResourceManager.getInstance().getImageByName("connection-banner.png")));
 		getContentPane().add(bannerField);
 
-		JLabel copyrightField = new JLabel("Copyright ESSAKKAY Nabil");
+		JLabel copyrightField = new JLabel("Copyright GRP6");
 		copyrightField.setForeground(Color.GRAY);
 		copyrightField.setBounds(10, 343, 172, 14);
 		getContentPane().add(copyrightField);
